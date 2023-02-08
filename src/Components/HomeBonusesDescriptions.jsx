@@ -8,7 +8,7 @@ const HomeBonusesDescriptions = () => {
     <div className={`border-t-[1px]  sm:border-t-0  pb-0 `}>
       {homeBonusesDescriptionsData.map((item, index) => (
         <div
-          key={item.title}
+          key={item.imgTitle}
           className=" w-full border-b-[1px] border-t-[1px] sm:border-t-0 sm:border-b-0"
         >
           <div

@@ -1,14 +1,27 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 
 const Context = React.createContext();
 
 function ContextProvider(props) {
   const [users, setUsers] = useState([]);
-  const [logged, setLogged] = useState(false);
   const [currentAccount, setCurrentAccount] = useState();
+  const [trendingCoins, setTrendingCoins] = useState();
+  const [rendering, setRendering] = useState(true);
+
+  useEffect(() => {
+    if (rendering) {
+      (async () => {
+        const { data } = await axios.get(
+          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=gecko_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h"
+        );
+        setTrendingCoins(data);
+        setRendering(false);
+      })();
+    }
+  }, []);
 
   const checkIfLoginTrue = (email, password) => {
-    console.log(email, "123");
     const emailFound = users.find((item) => item.email === email);
     if (emailFound) {
       if (emailFound.password === password) {
@@ -19,7 +32,7 @@ function ContextProvider(props) {
     }
     return "email haven't found";
   };
-  console.log(currentAccount);
+
   return (
     <Context.Provider
       value={{
@@ -27,6 +40,7 @@ function ContextProvider(props) {
         users,
         checkIfLoginTrue,
         currentAccount,
+        trendingCoins,
       }}
     >
       {props.children}

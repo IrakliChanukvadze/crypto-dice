@@ -1,7 +1,7 @@
 import React from "react";
 import HomeBonuses from "../Components/HomeBonuses";
 import HomeBonusesDescriptions from "../Components/HomeBonusesDescriptions";
-
+import CoinSupportList from "../Components/CoinSupportList";
 import HomeHero from "../Components/HomeHero";
 import HomeSection from "../Components/HomeSection";
 import HomeStats from "../Components/HomeStats";
@@ -23,6 +23,7 @@ const Home = () => {
       ))}
       <HomeBonuses />
       <HomeBonusesDescriptions />
+      <CoinSupportList />
     </div>
   );
 };
