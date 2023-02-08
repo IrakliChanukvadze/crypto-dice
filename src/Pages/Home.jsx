@@ -1,5 +1,6 @@
 import React from "react";
 import HomeBonuses from "../Components/HomeBonuses";
+import HomeBonusesDescriptions from "../Components/HomeBonusesDescriptions";
 
 import HomeHero from "../Components/HomeHero";
 import HomeSection from "../Components/HomeSection";
@@ -21,6 +22,7 @@ const Home = () => {
         />
       ))}
       <HomeBonuses />
+      <HomeBonusesDescriptions />
     </div>
   );
 };

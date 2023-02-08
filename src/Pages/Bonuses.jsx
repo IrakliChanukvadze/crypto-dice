@@ -3,10 +3,20 @@ import BonusCont from "../Components/BonusCont";
 import { responsiveCont } from "../Styles";
 import { bonusesData } from "../Data";
 import { AiOutlineGift } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const Bonuses = () => {
+  const navigate = useNavigate();
   return (
     <div className={`${responsiveCont}  h-[80%] pt-24 pb-10`}>
+      <h2
+        className="text-white opacity-80 text-lg md:text-xl xl:text-2xl py-10 cursor-pointer"
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        Go Back
+      </h2>
       <div className="flex items-center gap-6 mb-10">
         <div className="w-12 h-12 bg-[#CEFE02] rounded-full flex items-center justify-center ">
           <AiOutlineGift size={25} className="text-black font-bold" />

@@ -20,6 +20,9 @@ import lottery from "../assets/lottery.png";
 import luckyBonus from "../assets/luckyBonus.png";
 import affiliate from "../assets/affiliate.png";
 import poolBall from "../assets/ball.png";
+import welcomeBonuses from "../assets/welcomeBonuses.png";
+import getBonuses from "../assets/getBonuses.png";
+import playBonuses from "../assets/playBonuses.png";
 
 export const accountMenuData = [
   {
@@ -197,5 +200,50 @@ export const homeBonusesData = [
     description:
       "Progressive Bitcoin Dice Jackpot that only grows and waiting to be won.",
     img: poolBall,
+  },
+];
+
+export const homeBonusesDescriptionsData = [
+  {
+    title: (
+      <h2 className="text-[#F2F2F2] font-normal text-lg md:text-2xl xl:text-4xl">
+        Experience what it means to truly make{" "}
+        <span className="text-[#CEFE02]"> a Bet? </span>
+      </h2>
+    ),
+    description:
+      "On Cryptodice we understand that you want your funds in and out as fast as possible with your desired payment provider.",
+    img: welcomeBonuses,
+    color: "text-[#1D84E2]",
+    link: "/bonuses",
+    imgTitle: "Welcome Bonus",
+  },
+  {
+    title: (
+      <h2 className="text-[#F2F2F2] font-normal text-lg md:text-2xl xl:text-4xl">
+        Gamble like never before with{" "}
+        <span className="text-[#EFD26E]">Cryptodice</span> newest way to bet.
+      </h2>
+    ),
+    description:
+      "We respect your privacy and provide you with tools to keep anonymous whilst using the site and will keep supporting new features for this purpose.",
+    img: getBonuses,
+    color: "text-[#EFD26E]",
+    link: "/",
+    imgTitle: "Get Bonus",
+  },
+  {
+    title: (
+      <h2 className="text-[#F2F2F2] font-normal text-lg md:text-2xl xl:text-4xl">
+        Gamble like never before with{" "}
+        <span className="text-[#EFD26E]">Cryptodice</span> newest way to bet.
+      </h2>
+    ),
+    description:
+      "Cryptodice natively supports 18 cryptocurrencies and over 100 altcoins through an exchange provider within the site. Deposits are possible through PayPal, Google pay, Apple pay, bank cards and many more are coming.",
+    img: playBonuses,
+    color: "text-[#1D84E2]",
+    link: "/",
+    imgTitle: "play",
   },
 ];

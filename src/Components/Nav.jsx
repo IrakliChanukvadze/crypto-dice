@@ -27,7 +27,7 @@ const Nav = () => {
     setLogOpen(false);
   };
   return (
-    <div className="bg-[#000000] text-white border-b-2 border-b-[#F2F2F2] w-full m-auto fixed">
+    <div className="bg-[#000000] text-white border-b-2 border-b-[#F2F2F2] w-full m-auto fixed z-50">
       <RegistrationModal
         open={regOpen}
         handleClose={handleRegClose}
@@ -36,9 +36,11 @@ const Nav = () => {
       />
       <LoginModal open={logOpen} handleClose={handleLogClose} />
       <div className={`${responsiveCont} flex justify-between items-center`}>
-        <h2 className="text-2xl text-#F2F2F2 font-bold md:text-4xl">
-          Cryptoid
-        </h2>
+        <Link to="/">
+          <h2 className="text-lg sm:text-2xl text-#F2F2F2 font-bold md:text-4xl hover:text-[#1D84E2] cursor-pointer">
+            Cryptoid
+          </h2>
+        </Link>
         <div className="flex align-middle gap-4 xs:gap-6 md:gap-12  xl:gap-16 my-4">
           <div className="hidden xl:flex items-center gap-16">
             {navListData.map((item) => (
@@ -49,7 +51,7 @@ const Nav = () => {
           </div>
           {!currentAccount && (
             <button
-              className="bg-[#272727] text-[#F2F2F2] font-bold rounded-full px-4 md:px-5 py-2"
+              className="bg-[#272727] text-[#F2F2F2] font-bold rounded-full border-2 border-black px-4 md:px-5 py-2 hover:bg-transparent hover:border-[#1D84E2]  hover:text-[#1D84E2]"
               onClick={handleLogOpen}
             >
               Log in
@@ -57,7 +59,7 @@ const Nav = () => {
           )}
           {!currentAccount ? (
             <button
-              className="text-[#1D84E2] font-bold rounded-full px-4 md:px-5 py-2 bg-transparent border-[#1D84E2] border-2"
+              className="text-[#1D84E2] font-bold rounded-full px-4 md:px-5 py-2 bg-transparent border-[#1D84E2] border-2 hover:border-black hover:bg-[#272727] hover:text-[#F2F2F2]"
               onClick={handleRegOpen}
             >
               Sign up
