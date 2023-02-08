@@ -49,7 +49,10 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
             </h2>
             <form
               onSubmit={handleSubmit((data) => {
-                console.log(errors);
+                const d = new Date();
+                let day = d.getDate();
+                let month = d.getMonth();
+                let year = d.getFullYear();
                 if (errors) {
                   setUsers((prev) => [
                     ...prev,
@@ -57,6 +60,8 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
                       email: data.email,
                       password: data.password,
                       userName: data.name,
+                      joinData: `${day} - ${month + 1} - ${year}`,
+                      money: 10000,
                     },
                   ]);
                   reset({

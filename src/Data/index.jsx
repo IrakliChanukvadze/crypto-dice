@@ -247,3 +247,12 @@ export const homeBonusesDescriptionsData = [
     imgTitle: "play",
   },
 ];
+
+export const footerData = [
+  { title: "Terms Of Use" },
+  { title: "Privacy Policy" },
+  { title: "About Us" },
+  { title: "FAQ" },
+  { title: "Help Center" },
+  { title: "Gamble Aware" },
+];

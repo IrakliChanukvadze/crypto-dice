@@ -2,6 +2,7 @@ import Nav from "./Components/Nav";
 import Home from "./Pages/Home";
 import { Routes, Route } from "react-router-dom";
 import Bonuses from "./Pages/Bonuses";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/bonuses" element={<Bonuses />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

@@ -42,8 +42,7 @@ const LoginModal = ({ open, handleClose }) => {
           </h2>
           <form
             onSubmit={handleSubmit((data) => {
-              console.log(data.email, "data.email");
-              console.log(checkIfLoginTrue(data.email, data.password));
+              checkIfLoginTrue(data.email, data.password);
               handleClose();
             })}
           >

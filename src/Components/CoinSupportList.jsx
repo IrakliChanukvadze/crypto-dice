@@ -32,15 +32,14 @@ const CoinSupportList = () => {
     };
   }, []);
 
-  console.log(num);
   return (
-    <div className="w-full bg-[#272727] py-10">
-      <div className="py-10 flex flex-col sm:flex-row sm:gap-[9px] m-auto items-center justify-center">
+    <div className="w-full bg-[#272727]  border-t-[1px] border-b-[1px]">
+      <div className="py-16 flex flex-col sm:flex-row sm:gap-[9px] m-auto items-center justify-center ">
         <h2 className="text-white text-5xl text-center">WE SUPPORT</h2>
         <h2 className="text-white text-5xl text-center">ALL KIND</h2>
       </div>
 
-      <div className="h-36">
+      <div className="">
         <CarouselProvider
           naturalSlideHeight={10}
           naturalSlideWidth={10}

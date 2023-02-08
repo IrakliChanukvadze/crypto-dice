@@ -5,7 +5,7 @@ import HomeStatsItem from "./HomeStatsItem";
 
 const HomeStats = () => {
   return (
-    <div className="bg-[#272727] w-[100vw] text-white py-4">
+    <div className="bg-[#272727] w-full text-white py-4">
       <div
         className={`${responsiveCont} grid grid-cols-1 uxs:grid-cols-2 md:grid-cols-4 gap-6 uxs:gap-10 md:gap-8 xl:gap-12`}
       >

@@ -5,9 +5,16 @@ const Context = React.createContext();
 
 function ContextProvider(props) {
   const [users, setUsers] = useState([]);
-  const [currentAccount, setCurrentAccount] = useState();
+  const [currentAccount, setCurrentAccount] = useState({
+    email: "irakli@g.g",
+    joinData: "8 - 2 - 2023",
+    money: 10000,
+    password: "irakli@g.g",
+    userName: "irakli@g.g",
+  });
   const [trendingCoins, setTrendingCoins] = useState();
   const [rendering, setRendering] = useState(true);
+  const [currency, setCurrency] = useState();
 
   useEffect(() => {
     if (rendering) {
@@ -17,9 +24,12 @@ function ContextProvider(props) {
         );
         setTrendingCoins(data);
         setRendering(false);
+        setCurrency(data[0]);
       })();
     }
   }, []);
+
+  console.log(currency);
 
   const checkIfLoginTrue = (email, password) => {
     const emailFound = users.find((item) => item.email === email);
@@ -41,6 +51,8 @@ function ContextProvider(props) {
         checkIfLoginTrue,
         currentAccount,
         trendingCoins,
+        currency,
+        setCurrency,
       }}
     >
       {props.children}

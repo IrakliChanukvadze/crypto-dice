@@ -27,7 +27,7 @@ const Nav = () => {
     setLogOpen(false);
   };
   return (
-    <div className="bg-[#000000] text-white border-b-2 border-b-[#F2F2F2] w-full m-auto fixed z-50">
+    <div className="bg-[#000000] text-white border-b-2 border-b-[#F2F2F2] w-full fixed z-50">
       <RegistrationModal
         open={regOpen}
         handleClose={handleRegClose}
@@ -45,7 +45,9 @@ const Nav = () => {
           <div className="hidden xl:flex items-center gap-16">
             {navListData.map((item) => (
               <Link to={item.link} key={item.title}>
-                <h2 className="cursor-pointer ">{item.title}</h2>
+                <h2 className="cursor-pointer hover:text-[#1D84E2] ">
+                  {item.title}
+                </h2>
               </Link>
             ))}
           </div>

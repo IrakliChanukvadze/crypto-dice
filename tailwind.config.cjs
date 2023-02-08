@@ -5,7 +5,7 @@ module.exports = {
     screens: {
       uxs: "400px",
       sm: "645px",
-
+      footerResponsive: "912px",
       md: "1024px",
 
       xl: "1280px",

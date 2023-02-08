@@ -6,7 +6,7 @@ import HomeBonusItem from "./HomeBonusItem";
 const HomeBonuses = () => {
   const [but, setBut] = useState("next");
   const [count, setCount] = useState(1);
-  console.log(count);
+
   return (
     <div className="bg-[#272727] w-full pb-10">
       <div className={`${responsiveCont}`}>
