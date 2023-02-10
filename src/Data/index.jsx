@@ -27,8 +27,12 @@ import getBonuses from "../assets/getBonuses.png";
 import playBonuses from "../assets/playBonuses.png";
 
 export const accountMenu = () => {
-  const { handleSettingOpen, handleMyInfoOpen, handleWalletOpen } =
-    useContext(Context);
+  const {
+    handleSettingOpen,
+    handleMyInfoOpen,
+    handleWalletOpen,
+    handleVaultOpen,
+  } = useContext(Context);
 
   return [
     {
@@ -45,6 +49,12 @@ export const accountMenu = () => {
     },
     {
       name: "Vault",
+      onclick: {
+        modal: () => {
+          handleVaultOpen();
+          console.log("clicked");
+        },
+      },
       icon: <CiVault size={20} />,
     },
     {
@@ -277,6 +287,7 @@ export const settingsAccount = [
   { name: "presence", title: "Hide my online presence" },
   { name: "messages", title: "Private messages only allowed from friends" },
   { name: "showBallance", title: "Hide my ballance" },
+  { name: "showVaultBallance", title: "Hide vault ballance" },
   { name: "incomingTips", title: "Disable incoming tips" },
   { name: "marketing", title: "I don’t want to recieve marketing E-mails" },
 ];

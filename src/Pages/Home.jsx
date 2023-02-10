@@ -9,6 +9,7 @@ import { sectionData } from "../Data";
 import MyInfoModal from "../Components/MyInfoModal";
 import SettingsModal from "../Components/SettingsModal";
 import WalletModal from "../Components/WalletModal";
+import VaultModal from "../Components/VaultModal";
 
 const Home = () => {
   return (
@@ -30,6 +31,7 @@ const Home = () => {
       <SettingsModal />
       <MyInfoModal />
       <WalletModal />
+      <VaultModal />
     </div>
   );
 };

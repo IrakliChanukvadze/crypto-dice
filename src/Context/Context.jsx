@@ -17,6 +17,7 @@ function ContextProvider(props) {
     password: "irakli@g.g",
     userName: "irakli@g.g",
     twoStepAuthentikation: true,
+    vaultBallance: 5000,
     messages: [
       {
         from: "administration",
@@ -27,6 +28,7 @@ function ContextProvider(props) {
       account: {
         presence: false,
         showBallance: false,
+        showVaultBallance: false,
         marketing: true,
         incomingTips: false,
         messages: false,
@@ -47,6 +49,7 @@ function ContextProvider(props) {
   const [settingOpen, handleSettingOpen, handleSettingClose] = useModalOpener();
   const [myInfoOpen, handleMyInfoOpen, handleMyInfoClose] = useModalOpener();
   const [walletOpen, handleWalletOpen, handleWalletClose] = useModalOpener();
+  const [vaultOpen, handleVaultOpen, handleVaultClose] = useModalOpener();
   const [Countries, setCountries] = useState("");
 
   useEffect(() => {
@@ -99,6 +102,9 @@ function ContextProvider(props) {
         walletOpen,
         handleWalletOpen,
         handleWalletClose,
+        vaultOpen,
+        handleVaultOpen,
+        handleVaultClose,
       }}
     >
       {props.children}

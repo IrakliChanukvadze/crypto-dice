@@ -71,7 +71,7 @@ const AccountMenu = () => {
                     <img src={item.image} className="w-8 h-8" />
                     {(
                       currentAccount?.currentMoney / item?.current_price
-                    ).toFixed(12)}
+                    ).toFixed(14)}
                   </div>
                 </MenuItem>
               ))}

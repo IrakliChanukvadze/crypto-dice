@@ -65,7 +65,10 @@ const MyInfoModal = () => {
         </div>
         <div className="w-[94%] m-auto grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 justify-items-center mt-6">
           {data.map((item) => (
-            <div className="bg-[#272727] w-full md:w-[200px] h-auto md:h-[150px]   py-2 px-4 md:py-5 md:px-5 flex flex-row md:flex-col justify-between items-start">
+            <div
+              key={item.title}
+              className="bg-[#272727] w-full md:w-[200px] h-auto md:h-[150px]   py-2 px-4 md:py-5 md:px-5 flex flex-row md:flex-col justify-between items-start"
+            >
               <h2 className="text-[#8D8D8D] font-normal">{item.title}</h2>
               <h2 className={`${item.color && item.color}`}>{item.num}</h2>
             </div>
