@@ -4,7 +4,6 @@ import { AiOutlineClose } from "react-icons/ai";
 import GoogleImg from "../assets/Google__G__Logo.svg.png";
 import FacebookImg from "../assets/Facebook_f_Logo_(2019).svg.png";
 import { useForm } from "react-hook-form";
-import { BsCheckCircle, BsCircleFill } from "react-icons/bs";
 import { Context } from "../Context/Context";
 
 const LoginModal = ({ open, handleClose }) => {

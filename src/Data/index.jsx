@@ -3,6 +3,8 @@ import {
   RiVipLine,
   RiExchangeDollarFill,
 } from "react-icons/ri";
+import React, { useContext } from "react";
+import { Context } from "../Context/Context";
 import { SlWallet } from "react-icons/sl";
 import { CiVault, CiSettings } from "react-icons/ci";
 import { AiOutlineGift } from "react-icons/ai";
@@ -24,56 +26,60 @@ import welcomeBonuses from "../assets/welcomeBonuses.png";
 import getBonuses from "../assets/getBonuses.png";
 import playBonuses from "../assets/playBonuses.png";
 
-export const accountMenuData = [
-  {
-    name: "User Info",
-    icon: <RiAccountPinCircleFill size={20} />,
-  },
-  {
-    name: "Wallet",
-    icon: <SlWallet size={20} />,
-  },
-  {
-    name: "Vault",
-    icon: <CiVault size={20} />,
-  },
-  {
-    name: "Bonuses",
-    icon: <AiOutlineGift size={20} />,
-  },
-  {
-    name: "Vip",
-    icon: <RiVipLine size={20} />,
-  },
-  {
-    name: "Affiliate",
-    icon: <TbAffiliate size={20} />,
-  },
-  {
-    name: "Statistics",
-    icon: <ImStatsBars size={20} />,
-  },
-  {
-    name: "Transactions",
-    icon: <RiExchangeDollarFill size={20} />,
-  },
-  {
-    name: "Notifications",
-    icon: <IoMdNotificationsOutline size={20} />,
-  },
-  {
-    name: "Setting",
-    icon: <CiSettings size={20} />,
-  },
-  {
-    name: "Live Support",
-    icon: <MdSupportAgent size={20} />,
-  },
-  {
-    name: "Log out",
-    icon: <MdLogout size={20} />,
-  },
-];
+export const accountMenu = () => {
+  const { handleSettingOpen } = useContext(Context);
+  return [
+    {
+      name: "User Info",
+      icon: <RiAccountPinCircleFill size={20} />,
+    },
+    {
+      name: "Wallet",
+      icon: <SlWallet size={20} />,
+    },
+    {
+      name: "Vault",
+      icon: <CiVault size={20} />,
+    },
+    {
+      name: "Bonuses",
+      icon: <AiOutlineGift size={20} />,
+    },
+    {
+      name: "Vip",
+      icon: <RiVipLine size={20} />,
+    },
+    {
+      name: "Affiliate",
+      icon: <TbAffiliate size={20} />,
+    },
+    {
+      name: "Statistics",
+      icon: <ImStatsBars size={20} />,
+    },
+    {
+      name: "Transactions",
+      icon: <RiExchangeDollarFill size={20} />,
+    },
+    {
+      name: "Notifications",
+      icon: <IoMdNotificationsOutline size={20} />,
+    },
+    {
+      name: "Setting",
+      icon: <CiSettings size={20} />,
+      onclick: { modal: handleSettingOpen },
+    },
+    {
+      name: "Live Support",
+      icon: <MdSupportAgent size={20} />,
+    },
+    {
+      name: "Log out",
+      icon: <MdLogout size={20} />,
+    },
+  ];
+};
 
 export const bonusesData = [
   {
@@ -255,4 +261,34 @@ export const footerData = [
   { title: "FAQ" },
   { title: "Help Center" },
   { title: "Gamble Aware" },
+];
+
+export const data = () => {
+  return {};
+};
+
+export const settingsAccount = [
+  { name: "presence", title: "Hide my online presence" },
+  { name: "messages", title: "Private messages only allowed from friends" },
+  { name: "showBallance", title: "Hide my ballance" },
+  { name: "incomingTips", title: "Disable incoming tips" },
+  { name: "marketing", title: "I don’t want to recieve marketing E-mails" },
+];
+
+export const settingsVerifyData = [
+  {
+    title: "ID document number",
+    placeholder: "Enter your ID number here",
+    name: "idNumber",
+  },
+  {
+    title: "First name",
+    placeholder: "Enter your first name here",
+    name: "firstName",
+  },
+  {
+    title: "Last name",
+    placeholder: "Enter your last name here",
+    name: "lastName",
+  },
 ];

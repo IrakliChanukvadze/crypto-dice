@@ -6,28 +6,19 @@ import AccountMenu from "./AccountMenu";
 import LoginModal from "./LoginModal";
 import RegistrationModal from "./RegistrationModal";
 import { navListData } from "../Data";
+import useModalOpener from "../Hooks/useModalOpener";
+import SettingsModal from "./SettingsModal";
 
 const Nav = () => {
   const { currentAccount } = useContext(Context);
-  const [regOpen, setRegOpen] = useState(false);
-  const [logOpen, setLogOpen] = useState(false);
+  const [regOpen, handleRegOpen, handleRegClose] = useModalOpener();
+  const [logOpen, handleLogOpen, handleLogClose] = useModalOpener();
+
   const [success, setSuccess] = useState(false);
 
-  const handleRegOpen = () => {
-    setRegOpen(true);
-    setSuccess(false);
-  };
-  const handleRegClose = () => {
-    setRegOpen(false);
-  };
-  const handleLogOpen = () => {
-    setLogOpen(true);
-  };
-  const handleLogClose = () => {
-    setLogOpen(false);
-  };
   return (
     <div className="bg-[#000000] text-white border-b-2 border-b-[#F2F2F2] w-full fixed z-50">
+      <SettingsModal />
       <RegistrationModal
         open={regOpen}
         handleClose={handleRegClose}

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import useModalOpener from "../Hooks/useModalOpener";
 
 const Context = React.createContext();
 
@@ -11,10 +12,29 @@ function ContextProvider(props) {
     money: 10000,
     password: "irakli@g.g",
     userName: "irakli@g.g",
+    settings: {
+      account: {
+        presence: false,
+        showBallance: false,
+        marketing: true,
+        incomingTips: false,
+        messages: false,
+      },
+      verify: {
+        idNumber: "112",
+        firstName: "222",
+        lastName: "zzz",
+        country: "",
+        birthday: "",
+        gender: "male",
+      },
+    },
   });
   const [trendingCoins, setTrendingCoins] = useState();
   const [rendering, setRendering] = useState(true);
   const [currency, setCurrency] = useState();
+  const [settingOpen, handleSettingOpen, handleSettingClose] = useModalOpener();
+  const [Countries, setCountries] = useState("");
 
   useEffect(() => {
     if (rendering) {
@@ -26,10 +46,12 @@ function ContextProvider(props) {
         setRendering(false);
         setCurrency(data[0]);
       })();
+      (async () => {
+        const { data } = await axios.get("https://restcountries.com/v3.1/all");
+        setCountries(data);
+      })();
     }
   }, []);
-
-  console.log(currency);
 
   const checkIfLoginTrue = (email, password) => {
     const emailFound = users.find((item) => item.email === email);
@@ -50,9 +72,14 @@ function ContextProvider(props) {
         users,
         checkIfLoginTrue,
         currentAccount,
+        setCurrentAccount,
         trendingCoins,
         currency,
         setCurrency,
+        settingOpen,
+        handleSettingOpen,
+        handleSettingClose,
+        Countries,
       }}
     >
       {props.children}

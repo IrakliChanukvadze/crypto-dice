@@ -62,6 +62,23 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
                       userName: data.name,
                       joinData: `${day} - ${month + 1} - ${year}`,
                       money: 10000,
+                      settings: {
+                        account: {
+                          presence: false,
+                          showBallance: false,
+                          marketing: false,
+                          incomingTips: false,
+                          messages: false,
+                        },
+                        verify: {
+                          idNumber: "",
+                          firstName: "",
+                          lastName: "",
+                          country: "",
+                          birthday: "",
+                          gender: "",
+                        },
+                      },
                     },
                   ]);
                   reset({
