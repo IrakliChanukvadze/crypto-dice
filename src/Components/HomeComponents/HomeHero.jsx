@@ -1,5 +1,5 @@
 import React from "react";
-import { responsiveCont } from "../Styles";
+import { responsiveCont } from "../../Styles";
 const HomeHero = () => {
   return (
     <div className={`${responsiveCont} pt-20 border-[1px] sm:border-0`}>

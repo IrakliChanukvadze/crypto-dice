@@ -1,6 +1,6 @@
 import React from "react";
-import { responsiveCont } from "../Styles";
-import { statsData } from "../Data";
+import { responsiveCont } from "../../Styles";
+import { statsData } from "../../Data";
 import HomeStatsItem from "./HomeStatsItem";
 
 const HomeStats = () => {

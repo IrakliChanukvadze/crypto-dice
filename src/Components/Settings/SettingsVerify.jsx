@@ -1,7 +1,7 @@
 import { MenuItem, Select } from "@mui/material";
 import React, { useContext, useState, useEffect } from "react";
-import { Context } from "../Context/Context";
-import { settingsVerifyData } from "../Data";
+import { Context } from "../../Context/Context";
+import { settingsVerifyData } from "../../Data";
 
 const SettingsVerify = () => {
   const { Countries, currentAccount, setCurrentAccount } = useContext(Context);

@@ -1,18 +1,18 @@
 import React, { useState, useContext } from "react";
 import { Select, FormControl, MenuItem } from "@mui/material";
-import { Context } from "../Context/Context";
+import { Context } from "../../Context/Context";
 
-const VaultWithdraw = () => {
+const VaultDeposit = () => {
   const { trendingCoins, currency, currentAccount, setCurrentAccount } =
     useContext(Context);
+  const [show, setShow] = useState("");
+  const [error, setError] = useState("");
   const [depCur, setDepCur] = useState(currency.id);
   const [quantity, setQuantity] = useState("");
-  const [error, setError] = useState("");
-
   return (
     <div className="pb-10 pt-6">
       <div className="flex justify-center gap-4 items-center w-full">
-        <h2>Current deposit:</h2>
+        <h2>Vault deposit:</h2>
         <FormControl>
           <Select
             value={depCur}
@@ -45,6 +45,7 @@ const VaultWithdraw = () => {
               },
             }}
             onChange={(e) => {
+              console.log(e.target.value);
               setDepCur(e.target.value);
             }}
           >
@@ -54,7 +55,7 @@ const VaultWithdraw = () => {
                   <img src={item.image} className="w-8 h-8" />
                   <h2>
                     {(
-                      currentAccount?.currentMoney / item?.current_price
+                      currentAccount?.vaultBallance / item?.current_price
                     ).toFixed(14)}
                   </h2>
                 </div>
@@ -80,7 +81,15 @@ const VaultWithdraw = () => {
                 trendingCoins.find((item) => item.id === depCur).current_price
               ).toFixed(12)}
               onChange={(e) => {
-                if (e.target.value < 0) {
+                if (
+                  e.target.value >
+                  (
+                    currentAccount?.vaultBallance /
+                    trendingCoins.find((item) => item.id === depCur)
+                      .current_price
+                  ).toFixed(12)
+                ) {
+                } else if (e.target.value < 0) {
                 } else {
                   setQuantity(e.target.value);
                 }
@@ -93,68 +102,31 @@ const VaultWithdraw = () => {
         </div>
       </div>
       {error && <p className="text-red-500 text-sm mt-1"> {error} </p>}
-
       <div className="flex justify-center mt-6">
         <button
           className="bg-[#EFD26E] text-black tracking-[2px] px-10 py-2 font-bold"
           onClick={() => {
-            const currencyPrice = trendingCoins.find(
-              (item) => item.id === depCur
-            ).current_price;
-            if (quantity > currentAccount.currentMoney / currencyPrice) {
+            if (quantity > currentAccount.vaultBallance) {
               setError("not enough balanse");
-              setQuantity("");
-            } else if (quantity > 0) {
+            } else if (!quantity) {
+              setError("required");
+            } else {
               const withdrawMoneyInUsd =
                 quantity *
                 trendingCoins.find((item) => item.id === depCur).current_price;
               setCurrentAccount((prev) => ({
                 ...prev,
-                currentMoney: prev.currentMoney - withdrawMoneyInUsd,
-                vaultBallance: prev.vaultBallance + withdrawMoneyInUsd,
+                vaultBallance: prev.vaultBallance - withdrawMoneyInUsd,
+                currentMoney: prev.currentMoney + withdrawMoneyInUsd,
               }));
-            } else {
-              setError("required");
             }
           }}
         >
-          Withdraw
+          Deposit
         </button>
-      </div>
-      <div className="w-full flex justify-between mt-6">
-        <h2
-          className="text-[#8D8D8D] font-normal cursor-pointer"
-          onClick={() =>
-            setCurrentAccount((prev) => ({
-              ...prev,
-              settings: {
-                ...prev.settings,
-                account: {
-                  ...prev.settings.account,
-                  showVaultBallance: !prev.settings.account.showVaultBallance,
-                },
-              },
-            }))
-          }
-        >
-          {currentAccount.settings.account.showVaultBallance ? "hide" : "show"}{" "}
-          vault ballance
-        </h2>
-        {currentAccount.settings.account.showVaultBallance && (
-          <div className="flex items-center gap-2">
-            <h2 className="text-[#CEFE02]">
-              {currentAccount.vaultBallance /
-                trendingCoins.find((item) => item.id === depCur).current_price}
-            </h2>
-            <img
-              src={trendingCoins.find((item) => item.id === depCur).image}
-              className="w-6 h-6 rounded-full "
-            />
-          </div>
-        )}
       </div>
     </div>
   );
 };
 
-export default VaultWithdraw;
+export default VaultDeposit;

@@ -1,5 +1,5 @@
 import React from "react";
-import { responsiveCont } from "../Styles";
+import { responsiveCont } from "../../Styles";
 
 const HomeSection = ({ title, img, color, description }) => {
   return (

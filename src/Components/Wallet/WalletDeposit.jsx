@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { FormControl, Select, MenuItem } from "@mui/material";
-import { Context } from "../Context/Context";
+import { Context } from "../../Context/Context";
 import { AiOutlineQrcode } from "react-icons/ai";
-import qrCode from "../assets/qq.png";
+import qrCode from "../../assets/qq.png";
 
 const WalletDeposit = () => {
   const { trendingCoins, currency } = useContext(Context);

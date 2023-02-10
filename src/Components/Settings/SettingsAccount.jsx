@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useForm, useWatch, useFormState } from "react-hook-form";
 import { Switch } from "@mui/material";
-import { Context } from "../Context/Context";
+import { Context } from "../../Context/Context";
 import { TfiEye } from "react-icons/tfi";
-import { settingsAccount } from "../Data";
+import { settingsAccount } from "../../Data";
 
 const Controller = ({ control, name, rules, register, render }) => {
   const value = useWatch({

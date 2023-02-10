@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { homeBonusesData, homeBonusesDescriptionsData } from "../Data";
-import { responsiveCont } from "../Styles";
+import { homeBonusesData, homeBonusesDescriptionsData } from "../../Data";
+import { responsiveCont } from "../../Styles";
 
 const HomeBonusesDescriptions = () => {
   return (

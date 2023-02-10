@@ -1,15 +1,15 @@
 import React from "react";
-import HomeBonuses from "../Components/HomeBonuses";
-import HomeBonusesDescriptions from "../Components/HomeBonusesDescriptions";
+import HomeBonuses from "../Components/HomeComponents/HomeBonuses";
+import HomeBonusesDescriptions from "../Components/HomeComponents/HomeBonusesDescriptions";
 import CoinSupportList from "../Components/CoinSupportList";
-import HomeHero from "../Components/HomeHero";
-import HomeSection from "../Components/HomeSection";
-import HomeStats from "../Components/HomeStats";
+import HomeHero from "../Components/HomeComponents/HomeHero";
+import HomeSection from "../Components/HomeComponents/HomeSection";
+import HomeStats from "../Components/HomeComponents/HomeStats";
 import { sectionData } from "../Data";
 import MyInfoModal from "../Components/MyInfoModal";
-import SettingsModal from "../Components/SettingsModal";
-import WalletModal from "../Components/WalletModal";
-import VaultModal from "../Components/VaultModal";
+import SettingsModal from "../Components/Settings/SettingsModal";
+import WalletModal from "../Components/Wallet/WalletModal";
+import VaultModal from "../Components/Vault/VaultModal";
 
 const Home = () => {
   return (

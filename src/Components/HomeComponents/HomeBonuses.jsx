@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { responsiveCont } from "../Styles";
-import { homeBonusesData } from "../Data";
+import { responsiveCont } from "../../Styles";
+import { homeBonusesData } from "../../Data";
 import HomeBonusItem from "./HomeBonusItem";
 
 const HomeBonuses = () => {

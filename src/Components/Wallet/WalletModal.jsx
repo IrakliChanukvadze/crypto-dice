@@ -1,6 +1,6 @@
 import { Modal, Switch } from "@mui/material";
 import React, { useContext, useState } from "react";
-import { Context } from "../Context/Context";
+import { Context } from "../../Context/Context";
 import { AiOutlineClose } from "react-icons/ai";
 import { SlWallet } from "react-icons/sl";
 import WalletDeposit from "./WalletDeposit";

@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Button, Modal } from "@mui/material";
-import { Context } from "../Context/Context";
+import { Context } from "../../Context/Context";
 import Account from "./SettingsAccount";
 import Verify from "./SettingsVerify";
-import { responsiveCont } from "../Styles";
+import { responsiveCont } from "../../Styles";
 import { AiOutlineClose } from "react-icons/ai";
 
 const SettingsModal = () => {
