@@ -162,13 +162,13 @@ function App() {
               {errors?.password?.message}
             </p>
           </div>
-          <div className=" bg-transparent target w-10 h-10 border-[1px] border-white rounded-full flex justify-center items-center">
-            <TfiEye
-              size={25}
-              onClick={() => {
-                setShow((prev) => !prev);
-              }}
-            />
+          <div
+            className=" bg-transparent target w-10 h-10 border-[1px] border-white rounded-full flex justify-center items-center cursor-pointer"
+            onClick={() => {
+              setShow((prev) => !prev);
+            }}
+          >
+            <TfiEye size={25} />
           </div>
         </div>
         <p className="text-[12px] leading-3 md:text-xl xl:text-2xl opacity-50 mb-[6px] md:mb-[9px] mt-4 md:mt-6 tracking-[3px] ">
@@ -184,6 +184,7 @@ function App() {
               name={item.name}
               checked={settingsForm[item.name]}
               onChange={(e) => handleSettingsChange(e)}
+              color="success"
             />
           </div>
         ))}

@@ -41,6 +41,23 @@ const AccountMenu = () => {
                   },
                 },
               }}
+              sx={{
+                borderRadius: "30px",
+                color: "white",
+                padding: "2px 8px",
+                ".MuiOutlinedInput-notchedOutline": {
+                  borderColor: "rgba(228, 219, 233, 0.25)",
+                },
+                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "rgba(228, 219, 233, 0.25)",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "rgba(228, 219, 233, 0.25)",
+                },
+                ".MuiSvgIcon-root ": {
+                  fill: "white !important",
+                },
+              }}
               onChange={(e) => {
                 setCurrency(
                   trendingCoins.find((item) => item.id === e.target.value)
@@ -60,10 +77,6 @@ const AccountMenu = () => {
               ))}
             </Select>
           </FormControl>
-          <BsArrowDownCircle
-            size={25}
-            className="absolute top-[50%] -translate-y-[50%] right-14"
-          />
           <div className="w-12 h-12 bg-[#EFD26E] rounded-full flex items-center justify-center">
             <SlWallet size={25} className="text-black" />
           </div>

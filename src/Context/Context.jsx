@@ -16,6 +16,7 @@ function ContextProvider(props) {
     totalBets: 20,
     password: "irakli@g.g",
     userName: "irakli@g.g",
+    twoStepAuthentikation: true,
     messages: [
       {
         from: "administration",

@@ -38,7 +38,7 @@ const SettingsModal = () => {
             <h2
               className={`${
                 type === "Account" && "border-b-2"
-              } border-b-[#EFD26E]`}
+              } border-b-[#EFD26E] cursor-pointer`}
               onClick={() => {
                 setType("Account");
               }}
@@ -48,7 +48,7 @@ const SettingsModal = () => {
             <h2
               className={`${
                 type === "Verify" && "border-b-2"
-              } border-b-[#EFD26E]`}
+              } border-b-[#EFD26E] cursor-pointer`}
               onClick={() => {
                 setType("Verify");
               }}

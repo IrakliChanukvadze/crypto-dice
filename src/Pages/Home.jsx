@@ -8,6 +8,7 @@ import HomeStats from "../Components/HomeStats";
 import { sectionData } from "../Data";
 import MyInfoModal from "../Components/MyInfoModal";
 import SettingsModal from "../Components/SettingsModal";
+import WalletModal from "../Components/WalletModal";
 
 const Home = () => {
   return (
@@ -28,6 +29,7 @@ const Home = () => {
       <CoinSupportList />
       <SettingsModal />
       <MyInfoModal />
+      <WalletModal />
     </div>
   );
 };
