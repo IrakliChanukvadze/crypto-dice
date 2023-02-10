@@ -18,6 +18,13 @@ const SettingsVerify = () => {
   const hanldeFormSave = () => {
     setCurrentAccount((prev) => ({
       ...prev,
+      messages: [
+        ...prev.messages,
+        {
+          from: "administration",
+          message: "Your Personal information have been updated",
+        },
+      ],
       settings: { ...prev.settings, verify: { ...settingsVerify } },
     }));
   };

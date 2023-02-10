@@ -60,8 +60,12 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
                       email: data.email,
                       password: data.password,
                       userName: data.name,
-                      joinData: `${day} - ${month + 1} - ${year}`,
-                      money: 10000,
+                      joinData: `${day}/${month + 1}/${year}`,
+                      depositMoney: 10000,
+                      currentMoney: 10000,
+                      totalWin: 0,
+                      totalLoose: 0,
+                      totalBets: 0,
                       settings: {
                         account: {
                           presence: false,

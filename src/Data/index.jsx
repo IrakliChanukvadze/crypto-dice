@@ -27,14 +27,20 @@ import getBonuses from "../assets/getBonuses.png";
 import playBonuses from "../assets/playBonuses.png";
 
 export const accountMenu = () => {
-  const { handleSettingOpen } = useContext(Context);
+  const { handleSettingOpen, handleMyInfoOpen, handleWalletOpen } =
+    useContext(Context);
+
   return [
     {
       name: "User Info",
+      onclick: {
+        modal: handleMyInfoOpen,
+      },
       icon: <RiAccountPinCircleFill size={20} />,
     },
     {
       name: "Wallet",
+      onclick: { modal: handleWalletOpen },
       icon: <SlWallet size={20} />,
     },
     {

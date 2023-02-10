@@ -52,7 +52,9 @@ const AccountMenu = () => {
                 <MenuItem key={item.id} value={item.id}>
                   <div className="text-white hover:text-[#1D84E2]  flex items-center gap-2">
                     <img src={item.image} className="w-8 h-8" />
-                    {(currentAccount?.money / item?.current_price).toFixed(12)}
+                    {(
+                      currentAccount?.currentMoney / item?.current_price
+                    ).toFixed(12)}
                   </div>
                 </MenuItem>
               ))}

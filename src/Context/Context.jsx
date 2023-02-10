@@ -8,10 +8,20 @@ function ContextProvider(props) {
   const [users, setUsers] = useState([]);
   const [currentAccount, setCurrentAccount] = useState({
     email: "irakli@g.g",
-    joinData: "8 - 2 - 2023",
-    money: 10000,
+    joinData: "8/2/2023",
+    depositMoney: 10000,
+    currentMoney: 10001,
+    totalWin: 120,
+    totalLoose: 50,
+    totalBets: 20,
     password: "irakli@g.g",
     userName: "irakli@g.g",
+    messages: [
+      {
+        from: "administration",
+        message: "welcome on crypto dice, wish you all the luck",
+      },
+    ],
     settings: {
       account: {
         presence: false,
@@ -34,6 +44,8 @@ function ContextProvider(props) {
   const [rendering, setRendering] = useState(true);
   const [currency, setCurrency] = useState();
   const [settingOpen, handleSettingOpen, handleSettingClose] = useModalOpener();
+  const [myInfoOpen, handleMyInfoOpen, handleMyInfoClose] = useModalOpener();
+  const [walletOpen, handleWalletOpen, handleWalletClose] = useModalOpener();
   const [Countries, setCountries] = useState("");
 
   useEffect(() => {
@@ -80,6 +92,12 @@ function ContextProvider(props) {
         handleSettingOpen,
         handleSettingClose,
         Countries,
+        myInfoOpen,
+        handleMyInfoOpen,
+        handleMyInfoClose,
+        walletOpen,
+        handleWalletOpen,
+        handleWalletClose,
       }}
     >
       {props.children}

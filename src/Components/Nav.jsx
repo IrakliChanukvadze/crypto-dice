@@ -7,7 +7,6 @@ import LoginModal from "./LoginModal";
 import RegistrationModal from "./RegistrationModal";
 import { navListData } from "../Data";
 import useModalOpener from "../Hooks/useModalOpener";
-import SettingsModal from "./SettingsModal";
 
 const Nav = () => {
   const { currentAccount } = useContext(Context);
@@ -18,7 +17,6 @@ const Nav = () => {
 
   return (
     <div className="bg-[#000000] text-white border-b-2 border-b-[#F2F2F2] w-full fixed z-50">
-      <SettingsModal />
       <RegistrationModal
         open={regOpen}
         handleClose={handleRegClose}

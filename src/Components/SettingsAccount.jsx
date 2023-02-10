@@ -81,17 +81,38 @@ function App() {
             setCurrentAccount((prev) => ({
               ...prev,
               password: data.password,
+              messages: [
+                ...prev.messages,
+                {
+                  from: "administration",
+                  message: "Your Password has been updated",
+                },
+              ],
               settings: { ...prev.settings, account: { ...settingsForm } },
             }));
           } else if (data.email !== currentAccount.email) {
             setCurrentAccount((prev) => ({
               ...prev,
               email: data.email,
+              messages: [
+                ...prev.messages,
+                {
+                  from: "administration",
+                  message: "Your email has been updated",
+                },
+              ],
               settings: { ...prev.settings, account: { ...settingsForm } },
             }));
           } else {
             setCurrentAccount((prev) => ({
               ...prev,
+              messages: [
+                ...prev.messages,
+                {
+                  from: "administration",
+                  message: "Your account settings has been updated ",
+                },
+              ],
               settings: { ...prev.settings, account: { ...settingsForm } },
             }));
           }

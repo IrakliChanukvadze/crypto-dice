@@ -6,6 +6,8 @@ import HomeHero from "../Components/HomeHero";
 import HomeSection from "../Components/HomeSection";
 import HomeStats from "../Components/HomeStats";
 import { sectionData } from "../Data";
+import MyInfoModal from "../Components/MyInfoModal";
+import SettingsModal from "../Components/SettingsModal";
 
 const Home = () => {
   return (
@@ -24,6 +26,8 @@ const Home = () => {
       <HomeBonuses />
       <HomeBonusesDescriptions />
       <CoinSupportList />
+      <SettingsModal />
+      <MyInfoModal />
     </div>
   );
 };
