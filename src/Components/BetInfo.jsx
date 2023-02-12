@@ -10,7 +10,6 @@ const BetInfo = () => {
   const data = currentAccount?.bets?.find(
     (item) => item?.id === currentAccount?.betInfoId
   );
-  console.log(data);
   return (
     <Modal open={betInfoOpen} onClose={handleBetInfoClose}>
       <div

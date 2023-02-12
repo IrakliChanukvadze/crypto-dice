@@ -15,7 +15,6 @@ const WalletDeposit = () => {
 
   const [errorDeposit, setErrorDeposit] = useState("");
   const [loading, setLoading] = useState(false);
-  console.log(errorDeposit);
   return (
     <div className="my-6">
       <div className="flex justify-center">
@@ -162,7 +161,6 @@ const WalletDeposit = () => {
                       .current_price;
                   setLoading(true);
                   setTimeout(() => {
-                    console.log("entered");
                     setCurrentAccount((prev) => ({
                       ...prev,
                       transactions: [

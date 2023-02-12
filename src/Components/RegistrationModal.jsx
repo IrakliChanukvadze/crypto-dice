@@ -68,7 +68,6 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
                 }
                 if (errors) {
                   if (users.find((item) => item.email === data.email)) {
-                    console.log("blabla");
                     setExists("User with this email already exist");
                     reset({
                       email: "",

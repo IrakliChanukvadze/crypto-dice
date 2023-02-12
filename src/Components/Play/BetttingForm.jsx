@@ -21,8 +21,7 @@ const BetttingForm = ({ props }) => {
     type,
     setWin,
   } = props;
-  //   const { setCurrentAccount } = useContext(Context)
-  //   console.log(currentAccount);
+
   const [numBets, setNumBets] = useState("");
   const start = () => {
     if (bet) {
@@ -36,7 +35,7 @@ const BetttingForm = ({ props }) => {
     const betInUsd = bet * currency?.current_price;
     if (betInUsd > currentAccount?.currentMoney) {
       setError("Not enough on ballance");
-      console.log("entered");
+
       setNumBets(0);
     } else if (result) {
       const d = new Date();

@@ -59,7 +59,6 @@ const TransactionsBetsTable = () => {
                 <TableRow
                   key={item.id}
                   onClick={() => {
-                    console.log("clicked");
                     setCurrentAccount((prev) => ({
                       ...prev,
                       betInfoId: item.id,
