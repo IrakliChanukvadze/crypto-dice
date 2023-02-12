@@ -93,10 +93,7 @@ const BetsTable = ({ props }) => {
                     </TableCell>
                     <TableCell>
                       <div className="flex gap-1 items-center">
-                        <img
-                          src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579"
-                          className="w-8 h-8 rounded-full"
-                        />
+                        <img src={item.img} className="w-8 h-8 rounded-full" />
                         <h2 className="text-white font-normal text-xs  ">
                           {item.amount}
                         </h2>
