@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Select, FormControl, MenuItem } from "@mui/material";
+import { Select, FormControl, MenuItem, LinearProgress } from "@mui/material";
 import { Context } from "../../Context/Context";
 
 const VaultDeposit = () => {
@@ -9,6 +9,7 @@ const VaultDeposit = () => {
   const [error, setError] = useState("");
   const [depCur, setDepCur] = useState(currency.id);
   const [quantity, setQuantity] = useState("");
+  const [loading, setLoading] = useState(false);
   return (
     <div className="pb-10 pt-6">
       <div className="flex justify-center gap-4 items-center w-full">
@@ -45,7 +46,6 @@ const VaultDeposit = () => {
               },
             }}
             onChange={(e) => {
-              console.log(e.target.value);
               setDepCur(e.target.value);
             }}
           >
@@ -81,44 +81,62 @@ const VaultDeposit = () => {
                 trendingCoins.find((item) => item.id === depCur).current_price
               ).toFixed(12)}
               onChange={(e) => {
-                if (
-                  e.target.value >
-                  (
-                    currentAccount?.vaultBallance /
-                    trendingCoins.find((item) => item.id === depCur)
-                      .current_price
-                  ).toFixed(12)
-                ) {
-                } else if (e.target.value < 0) {
+                if (e.target.value < 0) {
                 } else {
                   setQuantity(e.target.value);
                 }
               }}
               type="number"
               className="w-full bg-transparent border-b-[1px] border-b-[#8D8D8D] text-xl xl:text-2xl  py-2 outline-0 "
-              placeholder="Ammount"
+              placeholder="Write ammount here"
             />
           </div>
         </div>
       </div>
       {error && <p className="text-red-500 text-sm mt-1"> {error} </p>}
+      {loading && <LinearProgress sx={{ marginTop: "24px" }} />}
       <div className="flex justify-center mt-6">
         <button
           className="bg-[#EFD26E] text-black tracking-[2px] px-10 py-2 font-bold"
           onClick={() => {
-            if (quantity > currentAccount.vaultBallance) {
+            if (
+              quantity >
+              currentAccount.vaultBallance /
+                trendingCoins.find((item) => item.id === depCur).current_price
+            ) {
               setError("not enough balanse");
             } else if (!quantity) {
               setError("required");
             } else {
+              const d = new Date();
+              let day = d.getDate();
+              let month = d.getMonth();
+              let year = d.getFullYear();
+              let hour = d.getHours();
+              let minutes = d.getMinutes();
               const withdrawMoneyInUsd =
                 quantity *
                 trendingCoins.find((item) => item.id === depCur).current_price;
-              setCurrentAccount((prev) => ({
-                ...prev,
-                vaultBallance: prev.vaultBallance - withdrawMoneyInUsd,
-                currentMoney: prev.currentMoney + withdrawMoneyInUsd,
-              }));
+              setLoading(true);
+              setTimeout(() => {
+                setCurrentAccount((prev) => ({
+                  ...prev,
+                  transactions: [
+                    {
+                      type: "vault-deposit",
+                      date: `${hour}:${minutes} ${day}/${month + 1}/${year}`,
+                      ammount: `$ ${withdrawMoneyInUsd}`,
+                      id: prev.transactionsId,
+                    },
+                    ...prev.transactions,
+                  ],
+                  transactionsId: ++prev.transactionsId,
+                  vaultBallance: prev.vaultBallance - withdrawMoneyInUsd,
+                  currentMoney: prev.currentMoney + withdrawMoneyInUsd,
+                }));
+                setQuantity("");
+                setLoading(false);
+              }, 1000);
             }
           }}
         >

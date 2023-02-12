@@ -3,40 +3,63 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../Context/Context";
 import { AiOutlineClose } from "react-icons/ai";
 import profile from "../assets/profile-avatar.png";
+import { NumericFormat } from "react-number-format";
 
 const MyInfoModal = () => {
   const { myInfoOpen, handleMyInfoClose, currentAccount } = useContext(Context);
   const [data, setData] = useState([]);
-  const [render, setRender] = useState(true);
   useEffect(() => {
-    if (render) {
-      setRender(false);
-      setData([
-        {
-          title: "Wins",
-          num: currentAccount.totalWin,
-          color: "text-[#CEFE02]",
-        },
-        {
-          title: "Looses",
-          num: currentAccount.totalLoose,
-          color: "text-[#FE0202]",
-        },
-        {
-          title: "Profit",
-          num: `${currentAccount.totalWin - currentAccount.totalLoose} $`,
-          color: `${
-            currentAccount.totalWin - currentAccount.totalLoose >= 0
-              ? "text-[#CEFE02]"
-              : "text-[#FE0202]"
-          } `,
-        },
-        { title: "Profit Rank", num: "N/A" },
-        { title: "Messages", num: currentAccount.messages.length },
-        { title: "Bets", num: currentAccount.totalBets },
-      ]);
-    }
-  }, []);
+    setData([
+      {
+        title: "Wins",
+        num: (
+          <NumericFormat
+            className="font-bold w-40 bg-[#272727]"
+            value={currentAccount?.totalWin?.toFixed(2)}
+            thousandSeparator={true}
+            prefix={"$ "}
+            disabled={true}
+          />
+        ),
+        color: "text-[#CEFE02]",
+      },
+      {
+        title: "Looses",
+        num: (
+          <NumericFormat
+            className="font-bold w-40 bg-[#272727]"
+            value={currentAccount?.totalLoose?.toFixed(2)}
+            thousandSeparator={true}
+            prefix={"$ "}
+            disabled={true}
+          />
+        ),
+        color: "text-[#FE0202]",
+      },
+      {
+        title: "Profit",
+        num: (
+          <NumericFormat
+            className="font-bold w-40 bg-[#272727]"
+            value={(
+              currentAccount?.totalWin - currentAccount?.totalLoose
+            )?.toFixed(2)}
+            thousandSeparator={true}
+            prefix={"$ "}
+            disabled={true}
+          />
+        ),
+        color: `${
+          currentAccount?.totalWin - currentAccount?.totalLoose >= 0
+            ? "text-[#CEFE02]"
+            : "text-[#FE0202]"
+        } `,
+      },
+      { title: "Profit Rank", num: "N/A" },
+      { title: "Messages", num: currentAccount?.messages?.length },
+      { title: "Bets", num: currentAccount?.totalBets },
+    ]);
+  }, [currentAccount]);
 
   return (
     <Modal open={myInfoOpen} onClose={handleMyInfoClose}>
@@ -61,7 +84,7 @@ const MyInfoModal = () => {
             alt="profile-picture"
             className="w-32 h-32 rounded-full"
           />
-          <h2>{currentAccount.userName}</h2>
+          <h2>{currentAccount?.userName}</h2>
         </div>
         <div className="w-[94%] m-auto grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 justify-items-center mt-6">
           {data.map((item) => (
@@ -69,15 +92,15 @@ const MyInfoModal = () => {
               key={item.title}
               className="bg-[#272727] w-full md:w-[200px] h-auto md:h-[150px]   py-2 px-4 md:py-5 md:px-5 flex flex-row md:flex-col justify-between items-start"
             >
-              <h2 className="text-[#8D8D8D] font-normal">{item.title}</h2>
-              <h2 className={`${item.color && item.color}`}>{item.num}</h2>
+              <h2 className="text-[#8D8D8D] font-normal">{item?.title}</h2>
+              <h2 className={`${item.color && item.color}`}>{item?.num}</h2>
             </div>
           ))}
         </div>
         <div className="w-[94%] m-auto flex justify-between mt-6">
           <h2 className="text-[#8D8D8D] font-normal">Joined on cryptodice</h2>
           <h2 className="text-[#8D8D8D] font-normal">
-            {currentAccount.joinData}
+            {currentAccount?.joinData}
           </h2>
         </div>
       </div>

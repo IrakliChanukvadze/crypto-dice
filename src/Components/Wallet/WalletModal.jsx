@@ -71,11 +71,11 @@ const WalletModal = () => {
             </div>
             <Switch
               name={"twoStepAuthentikation"}
-              checked={currentAccount.twoStepAuthentikation}
+              checked={currentAccount?.twoStepAuthentikation}
               onChange={() => {
                 setCurrentAccount((prev) => ({
                   ...prev,
-                  twoStepAuthentikation: !prev.twoStepAuthentikation,
+                  twoStepAuthentikation: !prev?.twoStepAuthentikation,
                 }));
               }}
               size="medium"

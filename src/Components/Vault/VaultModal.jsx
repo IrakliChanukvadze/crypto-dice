@@ -6,7 +6,8 @@ import VaultDeposit from "./VaultDeposit";
 import VaultWithdraw from "./VaultWithdraw";
 
 const VaultModal = () => {
-  const { vaultOpen, handleVaultClose, currentAccount } = useContext(Context);
+  const { vaultOpen, handleVaultClose, currentAccount, setCurrentAccount } =
+    useContext(Context);
   const [type, setType] = useState("Deposit");
 
   return (
@@ -66,11 +67,11 @@ const VaultModal = () => {
             </div>
             <Switch
               name={"twoStepAuthentikation"}
-              checked={currentAccount.twoStepAuthentikation}
+              checked={currentAccount?.twoStepAuthentikation}
               onChange={() => {
                 setCurrentAccount((prev) => ({
                   ...prev,
-                  twoStepAuthentikation: !prev.twoStepAuthentikation,
+                  twoStepAuthentikation: !prev?.twoStepAuthentikation,
                 }));
               }}
               size="medium"

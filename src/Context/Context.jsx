@@ -6,43 +6,7 @@ const Context = React.createContext();
 
 function ContextProvider(props) {
   const [users, setUsers] = useState([]);
-  const [currentAccount, setCurrentAccount] = useState({
-    email: "irakli@g.g",
-    joinData: "8/2/2023",
-    depositMoney: 10000,
-    currentMoney: 10001,
-    totalWin: 120,
-    totalLoose: 50,
-    totalBets: 20,
-    password: "irakli@g.g",
-    userName: "irakli@g.g",
-    twoStepAuthentikation: true,
-    vaultBallance: 5000,
-    messages: [
-      {
-        from: "administration",
-        message: "welcome on crypto dice, wish you all the luck",
-      },
-    ],
-    settings: {
-      account: {
-        presence: false,
-        showBallance: false,
-        showVaultBallance: false,
-        marketing: true,
-        incomingTips: false,
-        messages: false,
-      },
-      verify: {
-        idNumber: "112",
-        firstName: "222",
-        lastName: "zzz",
-        country: "",
-        birthday: "",
-        gender: "male",
-      },
-    },
-  });
+  const [currentAccount, setCurrentAccount] = useState();
   const [trendingCoins, setTrendingCoins] = useState();
   const [rendering, setRendering] = useState(true);
   const [currency, setCurrency] = useState();
@@ -50,7 +14,27 @@ function ContextProvider(props) {
   const [myInfoOpen, handleMyInfoOpen, handleMyInfoClose] = useModalOpener();
   const [walletOpen, handleWalletOpen, handleWalletClose] = useModalOpener();
   const [vaultOpen, handleVaultOpen, handleVaultClose] = useModalOpener();
+  const [transactionsOpen, handleTransactionsOpen, handleTransactionsClose] =
+    useModalOpener();
   const [Countries, setCountries] = useState("");
+
+  useEffect(() => {
+    if (currentAccount?.length > 64) {
+      setCurrentAccount((prev) => ({
+        ...prev,
+        transactions: prev?.transactions?.slice(0, 64),
+      }));
+    }
+  }, [currentAccount?.transactions?.length]);
+
+  useEffect(() => {
+    if (currentAccount?.bets?.length > 64) {
+      setCurrentAccount((prev) => ({
+        ...prev,
+        bets: prev?.bets?.slice(0, 64),
+      }));
+    }
+  }, [currentAccount?.bets?.length]);
 
   useEffect(() => {
     if (rendering) {
@@ -105,6 +89,9 @@ function ContextProvider(props) {
         vaultOpen,
         handleVaultOpen,
         handleVaultClose,
+        transactionsOpen,
+        handleTransactionsOpen,
+        handleTransactionsClose,
       }}
     >
       {props.children}
@@ -113,3 +100,42 @@ function ContextProvider(props) {
 }
 
 export { ContextProvider, Context };
+// {
+//     email: "irakli@g.g",
+//     joinData: "15:21 8/2/2023",
+//     depositMoney: 10000,
+//     currentMoney: 10001,
+//     totalWin: 120,
+//     totalLoose: 50,
+//     totalBets: 20,
+//     password: "irakli@g.g",
+//     userName: "irakli@g.g",
+//     twoStepAuthentikation: true,
+//     vaultBallance: 5000,
+//     transactionsId: 1,
+//     transactions: [],
+//     messages: [
+//       {
+//         from: "administration",
+//         message: "welcome on crypto dice, wish you all the luck",
+//       },
+//     ],
+//     settings: {
+//       account: {
+//         presence: false,
+//         showBallance: false,
+//         showVaultBallance: false,
+//         marketing: true,
+//         incomingTips: false,
+//         messages: false,
+//       },
+//       verify: {
+//         idNumber: "112",
+//         firstName: "222",
+//         lastName: "zzz",
+//         country: "",
+//         birthday: "",
+//         gender: "male",
+//       },
+//     },
+//   }

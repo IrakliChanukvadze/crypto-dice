@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Select, FormControl, MenuItem } from "@mui/material";
+import { Select, FormControl, MenuItem, LinearProgress } from "@mui/material";
 import { Context } from "../../Context/Context";
 
 const VaultWithdraw = () => {
@@ -8,6 +8,7 @@ const VaultWithdraw = () => {
   const [depCur, setDepCur] = useState(currency.id);
   const [quantity, setQuantity] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   return (
     <div className="pb-10 pt-6">
@@ -17,7 +18,6 @@ const VaultWithdraw = () => {
           <Select
             value={depCur}
             disableUnderline={true}
-            labelStyle={{ color: "#ff0000" }}
             variant="standard"
             sx={{
               backgroundColor: "#272727",
@@ -87,13 +87,13 @@ const VaultWithdraw = () => {
               }}
               type="number"
               className="w-full bg-transparent border-b-[1px] border-b-[#8D8D8D] text-xl xl:text-2xl  py-2 outline-0 "
-              placeholder="Ammount"
+              placeholder="Write ammount here"
             />
           </div>
         </div>
       </div>
       {error && <p className="text-red-500 text-sm mt-1"> {error} </p>}
-
+      {loading && <LinearProgress sx={{ marginTop: "24px" }} />}
       <div className="flex justify-center mt-6">
         <button
           className="bg-[#EFD26E] text-black tracking-[2px] px-10 py-2 font-bold"
@@ -105,14 +105,41 @@ const VaultWithdraw = () => {
               setError("not enough balanse");
               setQuantity("");
             } else if (quantity > 0) {
+              const d = new Date();
+              let day = d.getDate();
+              let month = d.getMonth();
+              let year = d.getFullYear();
+              let hour = d.getHours();
+              let minutes = d.getMinutes();
+              if (minutes < 10) {
+                minutes = `0${minutes}`;
+              }
+
               const withdrawMoneyInUsd =
                 quantity *
-                trendingCoins.find((item) => item.id === depCur).current_price;
-              setCurrentAccount((prev) => ({
-                ...prev,
-                currentMoney: prev.currentMoney - withdrawMoneyInUsd,
-                vaultBallance: prev.vaultBallance + withdrawMoneyInUsd,
-              }));
+                trendingCoins
+                  .find((item) => item.id === depCur)
+                  .current_price.toFixed(4);
+              setLoading(true);
+              setTimeout(() => {
+                setCurrentAccount((prev) => ({
+                  ...prev,
+                  transactions: [
+                    {
+                      type: "vault-withdraw",
+                      date: `${hour}:${minutes} ${day}/${month + 1}/${year}`,
+                      ammount: `$ ${withdrawMoneyInUsd}`,
+                      id: prev.transactionsId,
+                    },
+                    ...prev.transactions,
+                  ],
+                  transactionsId: ++prev.transactionsId,
+                  currentMoney: prev.currentMoney - withdrawMoneyInUsd,
+                  vaultBallance: prev.vaultBallance + withdrawMoneyInUsd,
+                }));
+                setQuantity("");
+                setLoading(false);
+              }, 1000);
             } else {
               setError("required");
             }

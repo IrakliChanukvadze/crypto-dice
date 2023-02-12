@@ -25,6 +25,7 @@ import poolBall from "../assets/ball.png";
 import welcomeBonuses from "../assets/welcomeBonuses.png";
 import getBonuses from "../assets/getBonuses.png";
 import playBonuses from "../assets/playBonuses.png";
+import { useNavigate } from "react-router-dom";
 
 export const accountMenu = () => {
   const {
@@ -32,7 +33,11 @@ export const accountMenu = () => {
     handleMyInfoOpen,
     handleWalletOpen,
     handleVaultOpen,
+    handleTransactionsOpen,
+    setCurrentAccount,
   } = useContext(Context);
+
+  const navigate = useNavigate();
 
   return [
     {
@@ -52,13 +57,17 @@ export const accountMenu = () => {
       onclick: {
         modal: () => {
           handleVaultOpen();
-          console.log("clicked");
         },
       },
       icon: <CiVault size={20} />,
     },
     {
       name: "Bonuses",
+      onclick: {
+        modal: () => {
+          navigate("/bonuses");
+        },
+      },
       icon: <AiOutlineGift size={20} />,
     },
     {
@@ -75,6 +84,9 @@ export const accountMenu = () => {
     },
     {
       name: "Transactions",
+      onclick: {
+        modal: handleTransactionsOpen,
+      },
       icon: <RiExchangeDollarFill size={20} />,
     },
     {
@@ -92,6 +104,7 @@ export const accountMenu = () => {
     },
     {
       name: "Log out",
+      onclick: { modal: () => setCurrentAccount(false) },
       icon: <MdLogout size={20} />,
     },
   ];
@@ -123,9 +136,8 @@ export const bonusesData = [
 ];
 
 export const navListData = [
-  { title: "Statistics", link: "/" },
+  { title: "Statistics", link: "/play" },
   { title: "Bonuses", link: "/bonuses" },
-  { title: "Live Support", link: "/" },
   { title: "Wallet", link: "/" },
 ];
 

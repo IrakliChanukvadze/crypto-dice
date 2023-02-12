@@ -25,9 +25,9 @@ const AccountMenu = () => {
   };
 
   return (
-    <div className="flex gap-0 items-center ">
+    <div className="flex flex-col-reverse w-full  m-auto uxs:flex-row gap-0 items-center justify-center ">
       {!currentAccount?.settings?.account?.showBallance && (
-        <div className="border-2 flex gap-4 items-center rounded-full relative pl-2">
+        <div className="border-2 flex gap-2 sm:gap-4 items-center rounded-full relative pl-0 sm:pl-2">
           <FormControl>
             <Select
               name="currency"
@@ -85,7 +85,7 @@ const AccountMenu = () => {
       <Button id="basic-button" onClick={handleClick}>
         <CgProfile
           size={35}
-          className="text-white hover:text-[#1D84E2] ml-4 xs:ml-6 md:ml-12 "
+          className="text-white hover:text-[#1D84E2] ml-[2px] sm:ml-4 xs:ml-6 md:ml-12 "
         />
       </Button>
       <Menu
@@ -113,6 +113,7 @@ const AccountMenu = () => {
             >
               <h2
                 onClick={() => {
+                  handleClose();
                   if (item?.onclick?.modal) {
                     item?.onclick?.modal();
                   }

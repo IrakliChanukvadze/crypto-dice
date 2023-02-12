@@ -44,7 +44,6 @@ const WalletDeposit = () => {
               },
             }}
             onChange={(e) => {
-              console.log(e.target.value);
               setDepCur(e.target.value);
             }}
           >

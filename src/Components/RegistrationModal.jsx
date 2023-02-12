@@ -19,7 +19,13 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
   const { setUsers, users } = useContext(Context);
 
   return (
-    <Modal open={open} onClose={handleClose}>
+    <Modal
+      open={open}
+      onClose={() => {
+        handleClose();
+        setSuccess(false);
+      }}
+    >
       {success ? (
         <div
           className={`absolute  top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-white h-28 w-auto m-auto px-10 flex items-center justify-center`}
@@ -53,6 +59,11 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
                 let day = d.getDate();
                 let month = d.getMonth();
                 let year = d.getFullYear();
+                let hour = d.getHours();
+                let minutes = d.getMinutes();
+                if (minutes < 10) {
+                  minutes = `0${minutes}`;
+                }
                 if (errors) {
                   setUsers((prev) => [
                     ...prev,
@@ -60,12 +71,27 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
                       email: data.email,
                       password: data.password,
                       userName: data.name,
-                      joinData: `${day}/${month + 1}/${year}`,
+                      joinData: `${hour}:${minutes} ${day}/${
+                        month + 1
+                      }/${year}`,
                       depositMoney: 10000,
                       currentMoney: 10000,
                       totalWin: 0,
                       totalLoose: 0,
                       totalBets: 0,
+                      twoStepAuthentikation: true,
+                      vaultBallance: 5000,
+                      transactionsId: 1,
+                      transactions: [],
+                      messages: [
+                        {
+                          from: "administration",
+                          message:
+                            "welcome on crypto dice, wish you all the luck",
+                        },
+                      ],
+                      betsId: 100001,
+                      bets: [],
                       settings: {
                         account: {
                           presence: false,
@@ -120,6 +146,10 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
                 type="name"
                 {...register("name", {
                   required: "required",
+                  maxLength: {
+                    value: 14,
+                    message: "max length is 14",
+                  },
                 })}
                 className="w-full bg-transparent border-b-[1px] border-b-[#8D8D8D]  text-xl xl:text-2xl pl-4 py-2 outline-0"
                 placeholder="username"

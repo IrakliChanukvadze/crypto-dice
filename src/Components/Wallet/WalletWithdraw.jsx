@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { FormControl, Select, MenuItem } from "@mui/material";
+import React, { useContext, useEffect, useState } from "react";
+import { FormControl, Select, MenuItem, LinearProgress } from "@mui/material";
 import { Context } from "../../Context/Context";
 
 const WalletWithdraw = () => {
@@ -14,6 +14,8 @@ const WalletWithdraw = () => {
   const [error, setError] = useState("");
   const [address, setAddress] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [loading, setLoading] = useState(false);
+
   return (
     <div className="my-6 ">
       <div className="flex justify-center">
@@ -49,7 +51,6 @@ const WalletWithdraw = () => {
               },
             }}
             onChange={(e) => {
-              console.log(e.target.value);
               setDepCur(e.target.value);
             }}
           >
@@ -141,6 +142,7 @@ const WalletWithdraw = () => {
       {error.includes("amount") && (
         <p className="text-red-500 text-sm mt-1"> required </p>
       )}
+      {loading && <LinearProgress sx={{ marginTop: "24px" }} />}
       <div className="flex justify-center mt-6">
         <button
           className="bg-[#EFD26E] text-black tracking-[2px] px-10 py-2 font-bold"
@@ -149,21 +151,37 @@ const WalletWithdraw = () => {
               const withdrawMoneyInUsd =
                 quantity *
                 trendingCoins.find((item) => item.id === depCur).current_price;
-              console.log(withdrawMoneyInUsd);
-              setCurrentAccount((prev) => ({
-                ...prev,
-                currentMoney: prev.currentMoney - withdrawMoneyInUsd,
-              }));
-              setError("");
+              const d = new Date();
+              let day = d.getDate();
+              let month = d.getMonth();
+              let year = d.getFullYear();
+              let hour = d.getHours();
+              let minutes = d.getMinutes();
+              setLoading(true);
+              setTimeout(() => {
+                setCurrentAccount((prev) => ({
+                  ...prev,
+                  transactions: [
+                    {
+                      type: "withdraw",
+                      date: `${hour}:${minutes} ${day}/${month + 1}/${year}`,
+                      ammount: withdrawMoneyInUsd,
+                      id: Math.floor(Math.random() * 10000000),
+                    },
+                    ...prev.transactions,
+                  ],
+                  currentMoney: prev.currentMoney - withdrawMoneyInUsd,
+                }));
+                setError("");
+                setQuantity("");
+                setLoading(false);
+              }, 2000);
             } else {
               if (!address && quantity > 0) {
-                console.log(1);
                 setError("address");
               } else if (address) {
-                console.log(2);
                 setError("amount");
               } else {
-                console.log(3);
                 setError("address amount");
               }
             }

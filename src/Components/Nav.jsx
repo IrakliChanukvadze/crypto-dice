@@ -26,11 +26,11 @@ const Nav = () => {
       <LoginModal open={logOpen} handleClose={handleLogClose} />
       <div className={`${responsiveCont} flex justify-between items-center`}>
         <Link to="/">
-          <h2 className="text-lg sm:text-2xl text-#F2F2F2 font-bold md:text-4xl hover:text-[#1D84E2] cursor-pointer">
+          <h2 className="sm:text-2xl text-#F2F2F2 font-bold md:text-4xl hover:text-[#1D84E2] cursor-pointer hidden sm:block">
             Cryptoid
           </h2>
         </Link>
-        <div className="flex align-middle gap-4 xs:gap-6 md:gap-12  xl:gap-16 my-4">
+        <div className="flex items-center justify-center gap-4 xs:gap-6 md:gap-12  xl:gap-16 my-4 mx-auto sm:mx-0">
           <div className="hidden xl:flex items-center gap-16">
             {navListData.map((item) => (
               <Link to={item.link} key={item.title}>
