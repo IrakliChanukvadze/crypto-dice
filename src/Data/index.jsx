@@ -81,8 +81,9 @@ export const accountMenu = () => {
       icon: <AiOutlineGift size={20} />,
     },
     {
-      name: "Statistics",
-      icon: <ImStatsBars size={20} />,
+      name: "Settings",
+      icon: <CiSettings size={20} />,
+      onclick: { modal: handleSettingOpen },
     },
     {
       name: "Transactions",
