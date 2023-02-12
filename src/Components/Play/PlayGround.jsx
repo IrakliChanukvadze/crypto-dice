@@ -62,11 +62,11 @@ const PlayGround = ({ props }) => {
         {result}
       </h2>
 
-      <div className="w-[94%] max-w-[600px] m-auto bg-[#E1E1E1] h-20 sm:h-24 relative rounded-full flex items-center justify-center border-2 border-red-400">
+      <div className="w-[94%] max-w-[600px] m-auto bg-[#E1E1E1] h-16 uxs:h-20 sm:h-24 relative rounded-full flex items-center justify-center border-2 border-red-400">
         <div className="text-black flex gap-3 sm:gap-8 justify-center">
           <div>
-            <h2 className="border-b-[1px] border-b-black font-normal opacity-40 text-[16px] sm:text-[20px]">
-              Win Chance
+            <h2 className="border-b-[1px] border-b-black font-normal opacity-40 text-[16px] sm:text-[20px] flex gap-2">
+              <span className="hidden sm:block">Win</span> Chance
             </h2>
             <h2 className="font-bold text-[16px] sm:text-[20px]">
               {type === "over"
@@ -89,7 +89,7 @@ const PlayGround = ({ props }) => {
             setType("over");
             setMultiplier((0.985 * (100 / (100 - betValue)))?.toFixed(3));
           }}
-          className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full absolute left-2 top-2  border-[1px] flex  items-center justify-center ${
+          className={`w-12 h-12 uxs:w-16 uxs:h-16 sm:w-20 sm:h-20 rounded-full absolute left-2 top-2  border-[1px] flex  items-center justify-center ${
             type === "over"
               ? "bg-black border-[1px]  text-[#F2F2F2]"
               : "bg-white border-black text-black"
@@ -104,7 +104,7 @@ const PlayGround = ({ props }) => {
             setType("less");
             setMultiplier((0.985 * (100 / betValue))?.toFixed(3));
           }}
-          className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full absolute right-2  top-2 border-[1px] flex  items-center justify-center ${
+          className={`w-12 h-12 uxs:w-16 uxs:h-16 sm:w-20 sm:h-20 rounded-full absolute right-2  top-2 border-[1px] flex  items-center justify-center ${
             type === "less"
               ? "bg-black border-[1px]  text-[#F2F2F2]"
               : "bg-white border-black text-black"
