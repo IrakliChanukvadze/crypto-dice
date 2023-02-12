@@ -134,7 +134,7 @@ const BetttingForm = ({ props }) => {
     }
   }, [result]);
   return (
-    <div className="w-full md:w-[32%] bg-[#000] h-full py-4 mt-6 md:mt-0">
+    <div className="w-full md:w-[32%] bg-[#000] h-full py-4 mt-4 md:mt-0">
       <div className="w-[94%] m-auto   border-white px-2 ">
         <div className="flex gap-4 py-6">
           <div

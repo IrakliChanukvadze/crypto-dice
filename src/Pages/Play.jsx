@@ -18,7 +18,7 @@ const Play = () => {
   const [win, setWin] = useState(true);
 
   return (
-    <div className="bg-[#272727] pt-80 md:pt-24 min-h-[90vh]">
+    <div className="bg-[#272727] pt-[340px] uxs:pt-80 md:pt-24 min-h-[90vh]">
       <div
         className={`${responsiveCont} mt-12  text-white flex flex-col-reverse relative  items-center  justify-between md:flex-row h-96`}
       >

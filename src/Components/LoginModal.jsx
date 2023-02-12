@@ -36,7 +36,7 @@ const LoginModal = ({ open, handleClose }) => {
         </div>
         <div className="w-[94%] xl:w=auto m-auto">
           <h2 className="flex flex-col md:flex-row md:gap-[12px] uppercase text-2xl md:text-4xl my-8 md:my-12 xl:text-5xl flex-wrap ">
-            Register into
+            Login into
             <span className="text-[#CEFE02]">Cryptodice</span>
           </h2>
           <form

@@ -15,7 +15,7 @@ const PlayGround = ({ props }) => {
   } = props;
 
   return (
-    <div className="w-full md:w-[62%] bg-[#000] pt-10 pb-6 relative flex flex-col-reverse md:flex-col justify-between gap-12 h-full">
+    <div className="w-full md:w-[62%] bg-[#000] pt-10 pb-6 relative flex flex-col-reverse md:flex-col  justify-between gap-24 h-full">
       <Slider
         size="medium"
         min={0}
@@ -57,7 +57,7 @@ const PlayGround = ({ props }) => {
       <h2
         className={`text-2xl ${
           win ? "text-[#00FF22]" : "text-[#FF0000]"
-        } tracking-[2px] absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]`}
+        } tracking-[2px] absolute top-[50%] left-[50%] -translate-x-[50%] md:-translate-y-[50%]`}
       >
         {result}
       </h2>

@@ -105,7 +105,7 @@ const SettingsVerify = () => {
       </p>
       <Select
         name="country"
-        value={val}
+        value={currentAccount?.settings?.verify?.country || val}
         disableUnderline={true}
         variant="standard"
         MenuProps={{
@@ -120,6 +120,7 @@ const SettingsVerify = () => {
           },
         }}
         sx={{
+          color: "#fff",
           width: "100%",
           borderBottom: "1px solid #8D8D8D",
           backgroundColor: "#414141",
