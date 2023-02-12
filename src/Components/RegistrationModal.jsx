@@ -12,11 +12,13 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
     register,
     handleSubmit,
     reset,
+
     formState: { errors },
   } = useForm();
 
   const [show, setShow] = useState(false);
   const { setUsers, users } = useContext(Context);
+  const [exists, setExists] = useState("");
 
   return (
     <Modal
@@ -65,57 +67,70 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
                   minutes = `0${minutes}`;
                 }
                 if (errors) {
-                  setUsers((prev) => [
-                    ...prev,
-                    {
-                      email: data.email,
-                      password: data.password,
-                      userName: data.name,
-                      joinData: `${hour}:${minutes} ${day}/${
-                        month + 1
-                      }/${year}`,
-                      depositMoney: 10000,
-                      currentMoney: 10000,
-                      totalWin: 0,
-                      totalLoose: 0,
-                      totalBets: 0,
-                      twoStepAuthentikation: true,
-                      vaultBallance: 5000,
-                      transactionsId: 1,
-                      transactions: [],
-                      messages: [
-                        {
-                          from: "administration",
-                          message:
-                            "welcome on crypto dice, wish you all the luck",
-                        },
-                      ],
-                      betsId: 100001,
-                      bets: [],
-                      settings: {
-                        account: {
-                          presence: false,
-                          showBallance: false,
-                          marketing: false,
-                          incomingTips: false,
-                          messages: false,
-                        },
-                        verify: {
-                          idNumber: "",
-                          firstName: "",
-                          lastName: "",
-                          country: "",
-                          birthday: "",
-                          gender: "",
+                  if (users.find((item) => item.email === data.email)) {
+                    console.log("blabla");
+                    setExists("User with this email already exist");
+                    reset({
+                      email: "",
+                      name: "",
+                      password: "",
+                    });
+                  } else {
+                    setUsers((prev) => [
+                      ...prev,
+                      {
+                        email: data.email,
+                        password: data.password,
+                        userName: data.name,
+                        joinData: `${hour}:${minutes} ${day}/${
+                          month + 1
+                        }/${year}`,
+                        depositMoney: 10000,
+                        currentMoney: 10000,
+                        totalWin: 0,
+                        totalLoose: 0,
+                        totalBets: 0,
+                        twoStepAuthentikation: true,
+                        vaultBallance: 5000,
+                        transactionsId: 1,
+                        transactions: [],
+                        messages: [
+                          {
+                            from: "administration",
+                            message:
+                              "welcome on crypto dice, wish you all the luck",
+                          },
+                        ],
+                        betInfoId: 1,
+                        betsId: 100001,
+                        bets: [],
+                        settings: {
+                          account: {
+                            presence: false,
+                            showBallance: false,
+                            marketing: false,
+                            incomingTips: false,
+                            messages: false,
+                          },
+                          verify: {
+                            idNumber: "",
+                            firstName: "",
+                            lastName: "",
+                            country: "",
+                            birthday: "",
+                            gender: "",
+                          },
                         },
                       },
-                    },
-                  ]);
-                  reset({
-                    email: "",
-                    password: "",
-                  });
-                  setSuccess(true);
+                    ]);
+                    setSuccess(true);
+                    reset({
+                      email: "",
+                      password: "",
+                      name: "",
+                    });
+                    setExist("");
+                  }
                 }
               })}
             >
@@ -136,7 +151,7 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
                 placeholder="Email"
               />
               <p className="text-[10px] text-red-400 mt-1">
-                {errors?.email?.message}
+                {exists || errors?.email?.message}
               </p>
               <p className=" text-[12px] leading-3 md:text-base opacity-50 mb-[4px] md:mb-[8px] xl:text-xl mt-6 md:mt-8">
                 UserName <span className="text-white  text-2xl">*</span>

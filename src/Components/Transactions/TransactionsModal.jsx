@@ -11,11 +11,14 @@ import React, { useContext, useState } from "react";
 import { Context } from "../../Context/Context";
 import { AiOutlineClose, AiOutlineCheck } from "react-icons/ai";
 import { RiExchangeDollarFill } from "react-icons/ri";
+import TransactionsTable from "./TransactionsTable";
+import BetsTable from "../Play/BetsTable";
+import TransactionsBetsTable from "./TransactionsBetsTable";
 
 const TransactionsModal = () => {
   const { transactionsOpen, handleTransactionsClose, currentAccount } =
     useContext(Context);
-  const [page, setPage] = useState(1);
+  const [type, setType] = useState("transaction");
 
   return (
     <Modal open={transactionsOpen} onClose={handleTransactionsClose}>
@@ -39,84 +42,33 @@ const TransactionsModal = () => {
             />
           </div>
         </div>
-        <div className="w-[94%] m-auto my-6 overflow-scroll">
-          <Table>
-            <TableHead sx={{ backgroundColor: "#EEBC1E", color: "black" }}>
-              <TableRow>
-                <TableCell>
-                  <h2 className="text-black font-semibold tracking-[1px]">
-                    Date
-                  </h2>
-                </TableCell>
-                <TableCell>
-                  <h2 className="text-black font-semibold tracking-[1px]">
-                    Type
-                  </h2>
-                </TableCell>
-                <TableCell>
-                  <h2 className="text-black font-semibold tracking-[1px]">
-                    Amount
-                  </h2>
-                </TableCell>
-                <TableCell>
-                  <h2 className="text-black font-semibold tracking-[1px]">
-                    Status
-                  </h2>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {currentAccount?.transactions
-                ?.slice((page - 1) * 8, (page - 1) * 8 + 8)
-                .map((item) => (
-                  <TableRow
-                    key={item.id}
-                    sx={{
-                      backgroundColor: "#16171a",
-                      "&:hover": {
-                        backgroundColor: "#131111",
-                      },
-                    }}
-                  >
-                    <TableCell>
-                      <h2 className="text-white font-normal ">{item.date}</h2>
-                    </TableCell>
-                    <TableCell>
-                      <h2 className="text-white font-normal ">{item.type}</h2>
-                    </TableCell>
-                    <TableCell>
-                      <h2 className="text-white font-normal ">
-                        {item.ammount}
-                      </h2>
-                    </TableCell>
-                    <TableCell>
-                      <AiOutlineCheck size={25} className="text-green-500" />
-                    </TableCell>
-                  </TableRow>
-                ))}
-            </TableBody>
-          </Table>
-        </div>
-        <div className="flex justify-center w-full mb-6">
-          <Pagination
-            sx={{
-              color: "gold",
-              border: "none",
-              "& .MuiPaginationItem-root": {
-                color: "gold",
-                ml: "8px",
-              },
-              "& .Mui-selected": {
-                backgroundColor: "#fff",
-                color: "black",
-                font: "bold",
-              },
+        <div className="flex justify-around py-2 border-b-[1px] border-b-white mb-4">
+          <h2
+            className={`${
+              type === "transaction" && "border-b-2"
+            } border-b-[#EFD26E] cursor-pointer`}
+            onClick={() => {
+              setType("transaction");
             }}
-            count={Math.ceil(currentAccount?.transactions?.length / 8)}
-            page={page}
-            onChange={(event, value) => setPage(value)}
-          />
+          >
+            Transaction
+          </h2>
+          <h2
+            className={`${
+              type === "bets" && "border-b-2"
+            } border-b-[#EFD26E] cursor-pointer`}
+            onClick={() => {
+              setType("bets");
+            }}
+          >
+            Bets
+          </h2>
         </div>
+        {type === "transaction" ? (
+          <TransactionsTable />
+        ) : (
+          <TransactionsBetsTable />
+        )}
       </div>
     </Modal>
   );

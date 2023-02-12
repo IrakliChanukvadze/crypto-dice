@@ -7,14 +7,16 @@ import {
   Pagination,
 } from "@mui/material";
 import React, { useContext, useState } from "react";
+import { Context } from "../../Context/Context";
 import { responsiveCont } from "../../Styles";
 
-const betsTable = ({ props }) => {
+const BetsTable = ({ props }) => {
   const [page, setPage] = useState(1);
-  const { currentAccount } = props;
+  const { handleBetInfoOpen, setCurrentAccount, currentAccount } =
+    useContext(Context);
 
   return (
-    <div className={`${responsiveCont} m-auto my-6 hidden sm:block`}>
+    <div className={`${responsiveCont} m-auto my-6 hidden md:block`}>
       <div className="w-full bg-[#414141] py-2 mt-6  ">
         <div className="flex justify-between h-10 md:h-14 bg-[#414141] items-center  w-[94%] m-auto text-base md:text-xl">
           <div className="flex gap-2 items-center">
@@ -64,7 +66,16 @@ const betsTable = ({ props }) => {
                 .map((item) => (
                   <TableRow
                     key={item.id}
+                    onClick={() => {
+                      console.log("clicked");
+                      setCurrentAccount((prev) => ({
+                        ...prev,
+                        betInfoId: item.id,
+                      }));
+                      handleBetInfoOpen();
+                    }}
                     sx={{
+                      cursor: "pointer",
                       backgroundColor: "#16171a",
                       "&:hover": {
                         backgroundColor: "#131111",
@@ -139,4 +150,4 @@ const betsTable = ({ props }) => {
   );
 };
 
-export default betsTable;
+export default BetsTable;

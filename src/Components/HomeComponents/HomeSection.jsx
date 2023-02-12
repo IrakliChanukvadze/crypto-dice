@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { responsiveCont } from "../../Styles";
+import { useNavigate } from "react-router-dom";
+import { Context } from "../../Context/Context";
 
 const HomeSection = ({ title, img, color, description }) => {
+  const navigate = useNavigate();
+  const { currentAccount } = useContext(Context);
   return (
     <div
       className={`${responsiveCont} bg-[${color}] px-4 uxs:px-6 sm:px-8 mt-10 py-10`}
@@ -10,6 +14,13 @@ const HomeSection = ({ title, img, color, description }) => {
         <h2 className="text-sm uxs:text-2xl md:text-4xl font-bold">{title}</h2>
         <button
           className={`text-[${color}] bg-black rounded-[10px] px-4 md:px-6 py-2`}
+          onClick={() => {
+            if (currentAccount) {
+              navigate("/play");
+            } else {
+              alert("please login to continue");
+            }
+          }}
         >
           Start Now
         </button>

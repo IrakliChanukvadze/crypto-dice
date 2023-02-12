@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { responsiveCont } from "../../Styles";
+import { useNavigate } from "react-router-dom";
+import { Context } from "../../Context/Context";
+
 const HomeHero = () => {
+  const navigate = useNavigate();
+  const { currentAccount } = useContext(Context);
+
   return (
     <div
       className={`${responsiveCont} pt-24 uxs:pt-20 border-[1px] sm:border-0`}
@@ -18,7 +24,16 @@ const HomeHero = () => {
           <p className="text-white opacity-40 text-xs sm:text-base md:text-xl ">
             Just look for going to make yourself a nice cup of coffee.
           </p>
-          <button className="bg-[#CEFE02] rounded-[10px] py-2 px-6">
+          <button
+            className="bg-[#CEFE02] rounded-[10px] py-2 px-6"
+            onClick={() => {
+              if (currentAccount) {
+                navigate("/play");
+              } else {
+                alert("please login to continue");
+              }
+            }}
+          >
             Start Now
           </button>
         </div>

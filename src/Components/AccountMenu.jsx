@@ -97,7 +97,7 @@ const AccountMenu = () => {
         }}
       >
         <div className="w-44 bg-[#5A5A5A] rounded-[13px] flex flex-col gap-4 py-2">
-          <div className="flex text-white hover:text-[#1D84E2] justify-between w-[88%] m-auto border-b-8 border-b-[rgba(20, 20, 20, 0.2)] cursor-pointer ">
+          <div className="flex text-white  justify-between w-[88%] m-auto border-b-8 border-b-[rgba(20, 20, 20, 0.2)] ">
             <h2>Hi, {currentAccount.userName}</h2>
             <img
               src={profile}

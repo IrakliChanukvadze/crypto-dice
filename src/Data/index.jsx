@@ -41,12 +41,22 @@ export const accountMenu = () => {
 
   return [
     {
+      name: "Play",
+      onclick: {
+        modal: () => {
+          navigate("/play");
+        },
+      },
+      icon: <SlWallet size={20} />,
+    },
+    {
       name: "User Info",
       onclick: {
         modal: handleMyInfoOpen,
       },
       icon: <RiAccountPinCircleFill size={20} />,
     },
+
     {
       name: "Wallet",
       onclick: { modal: handleWalletOpen },
@@ -71,14 +81,6 @@ export const accountMenu = () => {
       icon: <AiOutlineGift size={20} />,
     },
     {
-      name: "Vip",
-      icon: <RiVipLine size={20} />,
-    },
-    {
-      name: "Affiliate",
-      icon: <TbAffiliate size={20} />,
-    },
-    {
       name: "Statistics",
       icon: <ImStatsBars size={20} />,
     },
@@ -93,15 +95,7 @@ export const accountMenu = () => {
       name: "Notifications",
       icon: <IoMdNotificationsOutline size={20} />,
     },
-    {
-      name: "Setting",
-      icon: <CiSettings size={20} />,
-      onclick: { modal: handleSettingOpen },
-    },
-    {
-      name: "Live Support",
-      icon: <MdSupportAgent size={20} />,
-    },
+
     {
       name: "Log out",
       onclick: { modal: () => setCurrentAccount(false) },
@@ -136,9 +130,8 @@ export const bonusesData = [
 ];
 
 export const navListData = [
-  { title: "Statistics", link: "/play" },
+  { title: "Home", link: "/" },
   { title: "Bonuses", link: "/bonuses" },
-  { title: "Wallet", link: "/" },
 ];
 
 export const statsData = [
@@ -263,7 +256,7 @@ export const homeBonusesDescriptionsData = [
       "We respect your privacy and provide you with tools to keep anonymous whilst using the site and will keep supporting new features for this purpose.",
     img: getBonuses,
     color: "text-[#EFD26E]",
-    link: "/",
+    link: "/bonuses",
     imgTitle: "Get Bonus",
   },
   {
@@ -277,7 +270,7 @@ export const homeBonusesDescriptionsData = [
       "Cryptodice natively supports 18 cryptocurrencies and over 100 altcoins through an exchange provider within the site. Deposits are possible through PayPal, Google pay, Apple pay, bank cards and many more are coming.",
     img: playBonuses,
     color: "text-[#1D84E2]",
-    link: "/",
+    link: "/play",
     imgTitle: "play",
   },
 ];

@@ -10,6 +10,7 @@ import VaultModal from "./Components/Vault/VaultModal";
 import TransactionsModal from "./Components/Transactions/TransactionsModal";
 import Play from "./Pages/Play";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import BetInfo from "./Components/BetInfo";
 
 const theme = createTheme({
   palette: {
@@ -33,6 +34,7 @@ function App() {
         <WalletModal />
         <VaultModal />
         <TransactionsModal />
+        <BetInfo />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/bonuses" element={<Bonuses />} />

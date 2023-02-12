@@ -5,18 +5,9 @@ import { responsiveCont } from "../Styles";
 const Footer = () => {
   return (
     <div className="py-10  border-t-[1px]">
-      <div
-        className={`${responsiveCont} grid grid-cols-3 footerResponsive:grid-cols-6 gap-6 justify-items-center`}
-      >
-        {footerData.map((item) => (
-          <h2
-            key={item.title}
-            className="text-[#fff] cursor-pointer hover:text-[#1D84E2]    text-lg xl:text-xl"
-          >
-            {item.title}
-          </h2>
-        ))}
-      </div>
+      <h2 className="text-xl text-white opacity-80 text-center">
+        ©2023 Cripto-dice. All rights reserved
+      </h2>
     </div>
   );
 };

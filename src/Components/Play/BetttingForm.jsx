@@ -59,6 +59,11 @@ const BetttingForm = ({ props }) => {
                 id: prev?.betsId,
                 result: "win",
                 amount: bet,
+                multiplier: multiplier,
+                chance:
+                  type === "over"
+                    ? (100 - betValue)?.toFixed(1)
+                    : betValue?.toFixed(1),
                 img: currency?.image,
                 payout: (bet * multiplier)?.toFixed(10),
                 date: `${hour}:${minutes} ${day}/${month + 1}/${year}`,
@@ -82,6 +87,11 @@ const BetttingForm = ({ props }) => {
                 id: prev?.betsId,
                 result: "win",
                 amount: bet,
+                multiplier: multiplier,
+                chance:
+                  type === "over"
+                    ? (100 - betValue)?.toFixed(1)
+                    : betValue?.toFixed(1),
                 img: currency?.image,
                 payout: bet * multiplier,
                 date: `${hour}:${minutes} ${day}/${month + 1}/${year}`,
@@ -106,6 +116,11 @@ const BetttingForm = ({ props }) => {
                 result: "loose",
                 amount: bet,
                 img: currency?.image,
+                multiplier: multiplier,
+                chance:
+                  type === "over"
+                    ? (100 - betValue)?.toFixed(1)
+                    : betValue?.toFixed(1),
                 payout: 0,
                 date: `${hour}:${minutes} ${day}/${month + 1}/${year}`,
               },
@@ -120,7 +135,7 @@ const BetttingForm = ({ props }) => {
     }
   }, [result]);
   return (
-    <div className="w-full md:w-[32%] bg-[#000] h-full py-4 ">
+    <div className="w-full md:w-[32%] bg-[#000] h-full py-4 mt-6 md:mt-0">
       <div className="w-[94%] m-auto   border-white px-2 ">
         <div className="flex gap-4 py-6">
           <div
