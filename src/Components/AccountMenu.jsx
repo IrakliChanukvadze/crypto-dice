@@ -109,18 +109,15 @@ const AccountMenu = () => {
           {accountMenuData.map((item) => (
             <div
               key={item.name}
+              onClick={() => {
+                handleClose();
+                if (item?.onclick?.modal) {
+                  item?.onclick?.modal();
+                }
+              }}
               className="flex text-white hover:text-[#1D84E2] justify-between w-[88%] m-auto border-b-2 border-b-[rgba(217, 217, 217, 0.5)] cursor-pointer "
             >
-              <h2
-                onClick={() => {
-                  handleClose();
-                  if (item?.onclick?.modal) {
-                    item?.onclick?.modal();
-                  }
-                }}
-              >
-                {item.name}
-              </h2>
+              <h2>{item.name}</h2>
               {item.icon}
             </div>
           ))}

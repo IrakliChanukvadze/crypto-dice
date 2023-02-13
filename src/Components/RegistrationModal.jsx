@@ -36,10 +36,10 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
         </div>
       ) : (
         <div
-          className={`absolute  top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-[#414141] text-white pb-8 w-[90vw] max-w-[700px] m-auto `}
+          className={`absolute  top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-[#414141] text-white pb-6 w-[90vw] max-w-[700px] m-auto `}
         >
           <div className="w-full bg-[#272727]  ">
-            <div className="flex justify-between h-10 md:h-14 bg-[#272727] items-center  w-[94%] m-auto text-base md:text-xl">
+            <div className="flex justify-between h-10 md:h-12 bg-[#272727] items-center  w-[94%] m-auto text-base md:text-xl">
               <h2>Register</h2>
               <AiOutlineClose
                 size={20}
@@ -51,7 +51,7 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
             </div>
           </div>
           <div className="w-[94%] xl:w=auto m-auto">
-            <h2 className="flex flex-col md:flex-row md:gap-[12px] uppercase text-2xl md:text-4xl my-5 md:my-7 xl:text-5xl ">
+            <h2 className="flex flex-col md:flex-row md:gap-[12px] uppercase text-2xl md:text-4xl my-5 md:my-6 xl:text-5xl ">
               Register into
               <span className="text-[#CEFE02]">Cryptodice</span>
             </h2>
@@ -133,7 +133,7 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
                 }
               })}
             >
-              <p className=" text-[12px] leading-3 md:text-base opacity-50 mb-[4px] md:mb-[8px] xl:text-xl">
+              <p className=" text-[12px] leading-3 md:text-base opacity-50 mb-[4px] md:mb-[6px] xl:text-xl">
                 Email <span className="text-white  text-2xl">*</span>
               </p>
 
@@ -152,7 +152,7 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
               <p className="text-[10px] text-red-400 mt-1">
                 {exists || errors?.email?.message}
               </p>
-              <p className=" text-[12px] leading-3 md:text-base opacity-50 mb-[4px] md:mb-[8px] xl:text-xl mt-6 md:mt-8">
+              <p className=" text-[12px] leading-3 md:text-base opacity-50 mb-[4px] md:mb-[6px] xl:text-xl mt-6 md:mt-7">
                 UserName <span className="text-white  text-2xl">*</span>
               </p>
 
@@ -171,7 +171,7 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
               <p className="text-[10px] text-red-400 mt-1">
                 {errors?.name?.message}
               </p>
-              <p className="text-[12px] leading-3 md:text-base  xl:text-xl opacity-50 mb-[4px] md:mb-[8px] mt-6 md:mt-8 ">
+              <p className="text-[12px] leading-3 md:text-base  xl:text-xl opacity-50 mb-[4px] md:mb-[6px] mt-6 md:mt-7 ">
                 Password <span className="text-white  text-2xl">*</span>
               </p>
               <div className="relative w-full ">
@@ -199,7 +199,7 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
               <p className="text-[10px] text-red-400 mt-1">
                 {errors?.password?.message}
               </p>
-              <div className="flex gap-2 mb-4 md:mb-5 mt-6 md:mt-8">
+              <div className="flex gap-2 mb-4 md:mb-5 mt-5">
                 <Checkbox
                   {...register("checkbox", {
                     required: "required",
@@ -224,7 +224,7 @@ const RegistrationModal = ({ open, handleClose, success, setSuccess }) => {
               </p>
               <button
                 type="submit"
-                className="w-[120px] md:w-[160px] h-10 md:h-[40px] flex justify-center items-center bg-black m-auto font-bold text-[14px] leading-[14px] md:text-lg rounded-[10px] mt-4 md:mt-5 mb-5 md:mb-7"
+                className="w-[120px] md:w-[160px] h-10 md:h-[40px] flex justify-center items-center bg-black m-auto font-bold text-[14px] leading-[14px] md:text-lg rounded-[10px] mt-4 mb-5 "
               >
                 Sign up
               </button>
