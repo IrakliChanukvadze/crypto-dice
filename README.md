@@ -1,8 +1,28 @@
 # crypto-dice
 
+## Table of contents
+
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+- [Author](#author)
+
 ## Overview
 
-Introducing the all-new Crypto Dice Game! Join the fun and play with 10 of the most trending cryptocurrencies. Register to keep track of all your bets and transactions and see your progress. Whether you prefer to play manually or automatically, the game has got you covered with minimum bet of 10$ and maximum bet of 100000$. Keep an eye on your statistics including the number of bets, total winnings and losses, and profit. Get ready for an exciting and thrilling experience with the Crypto Dice Game! Try it now.
+Introducing the all-new Crypto Dice Game!
+
+### The challenge
+
+Users should be able to:
+
+- View the optimal layout for the app depending on their device's screen size
+- Register
+- Login
+- Play manualy or automaticly
+- Keep an eye on your statistics including the number of bets, total winnings and losses, and profit
 
 
 ### Screenshot
@@ -28,9 +48,11 @@ Built with:
 - [React form hooks](https://react-hook-form.com/)
 - [react-number-format](https://www.npmjs.com/package/react-number-format) 
 - [carousel](https://www.npmjs.com/package/pure-react-carousel)   
-- [axios](https://www.npmjs.com/package/axios)  
+- [axios](https://www.npmjs.com/package/axios) 
+- Flexbox
+- Mobile-first workflow
 
 ## Author
 
-- Website - [Irakli tchanukvadze](https://iraklichanukvadze.github.io/portfolio/)
+- Website - [Irakli Tchanukvadze](https://iraklichanukvadze.github.io/portfolio/)
 - Linkedin - [iraklichano](https://www.linkedin.com/in/iraklichano/)
