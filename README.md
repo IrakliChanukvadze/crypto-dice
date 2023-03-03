@@ -12,8 +12,8 @@ Introducing the all-new Crypto Dice Game! Join the fun and play with 10 of the m
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/IrakliChanukvadze/crypto-dice)
-- Live Site URL: [Add live site URL here](https://iraklichanukvadze.github.io/crypto-dice/#/)
+- [Solution URL](https://github.com/IrakliChanukvadze/crypto-dice)
+- [Live Site URL](https://iraklichanukvadze.github.io/crypto-dice/#/)
 
 ## My process
 
