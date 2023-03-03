@@ -55,4 +55,4 @@ Built with:
 ## Author
 
 - Website - [Irakli Tchanukvadze](https://iraklichanukvadze.github.io/portfolio/)
-- Linkedin - [iraklichano](https://www.linkedin.com/in/iraklichano/)
+- Linkedin - [iraklichano](https://www.linkedin.com/in/iraklichano/) 
