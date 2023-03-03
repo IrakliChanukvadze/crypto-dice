@@ -15,7 +15,7 @@
 Introducing the all-new Crypto Dice Game!
 
 ### The challenge
-
+  
 Users should be able to:
 
 - View the optimal layout for the app depending on their device's screen size
