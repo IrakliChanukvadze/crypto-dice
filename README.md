@@ -19,15 +19,16 @@ Introducing the all-new Crypto Dice Game! Join the fun and play with 10 of the m
 
 Built with:
 
-- #reactjs
-- #router
-- #mui
-- #tailwindcss
-- #reactformhooks
-- #reactnumberformat
-- #reacticons
-- #purereactacarousel
-- #axios
+
+- [React](https://reactjs.org/) - JS library
+- [React-router-dom](https://reactrouter.com/en/main) - for routing
+- [MaterialUI](https://mui.com/) - for styles
+- [TailwindCSS](https://tailwindcss.com/) - for styles
+- [React icons](https://react-icons.github.io/react-icons) - for icons 
+- [React form hooks](https://react-hook-form.com/)
+- [react-number-format](https://www.npmjs.com/package/react-number-format) 
+- [carousel](https://www.npmjs.com/package/pure-react-carousel)   
+- [axios](https://www.npmjs.com/package/axios)  
 
 ## Author
 
