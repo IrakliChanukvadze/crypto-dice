@@ -82,8 +82,8 @@ const TransactionsTable = () => {
               ml: "8px",
             },
             "& .Mui-selected": {
-              backgroundColor: "#fff",
-              color: "black",
+              backgroundColor: "gold",
+              color: "#121413",
               font: "bold",
             },
           }}

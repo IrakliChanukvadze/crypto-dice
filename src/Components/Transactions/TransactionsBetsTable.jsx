@@ -128,7 +128,7 @@ const TransactionsBetsTable = () => {
             },
             "& .Mui-selected": {
               backgroundColor: "gold",
-              color: "black",
+              color: "#001",
               font: "bold",
             },
           }}

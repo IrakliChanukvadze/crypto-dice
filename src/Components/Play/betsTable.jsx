@@ -131,7 +131,7 @@ const BetsTable = ({ props }) => {
                 },
                 "& .Mui-selected": {
                   backgroundColor: "gold",
-                  color: "black",
+                  color: "#121413",
                   font: "bold",
                 },
               }}
