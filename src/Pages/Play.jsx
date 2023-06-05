@@ -3,7 +3,7 @@ import { responsiveCont } from "../Styles";
 import { Context } from "../Context/Context";
 import BetttingForm from "../Components/Play/BetttingForm";
 import PlayGround from "../Components/Play/PlayGround";
-import BetsTable from "../Components/Play/BetsTable";
+import BetsTable from "../Components/Play/betsTable";
 
 const Play = () => {
   const { currentAccount, currency, setCurrentAccount } = useContext(Context);
